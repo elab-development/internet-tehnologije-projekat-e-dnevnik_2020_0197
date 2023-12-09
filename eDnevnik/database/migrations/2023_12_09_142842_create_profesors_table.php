@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('ime');
             $table->string('prezime');
-            $table->integer('predmetID');
+            $table->integer('predmetId');
             $table->timestamps();
         });
     }

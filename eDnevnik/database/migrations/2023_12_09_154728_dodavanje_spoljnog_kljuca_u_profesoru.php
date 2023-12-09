@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('profesors', function (Blueprint $table) {
             //
-            $table->foreign('predmetID')->references('id')->on('predmets');
-            $table->unsignedBigInteger('predmetID')->change();
+            $table->foreign('predmetId')->references('id')->on('predmets');
+            $table->unsignedBigInteger('predmetId')->change();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
     {
         Schema::table('profesors', function (Blueprint $table) {
             //
-            $table->dropForeign(['predmetID']);
-            $table->integer('predmetID')->change();
+            $table->dropForeign(['predmetId']);
+            $table->integer('predmetId')->change();
         });
     }
 };

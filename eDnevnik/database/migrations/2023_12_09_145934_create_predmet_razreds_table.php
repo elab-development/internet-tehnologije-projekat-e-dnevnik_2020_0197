@@ -18,11 +18,11 @@ return new class extends Migration
             $table->timestamps();
         
             // Definisanje složenog primarnog ključa
-            $table->primary(['PredmetId', 'RazredId']);
+            $table->primary(['predmetId', 'razredId']);
         
             // Definisanje spoljnih ključeva
-            $table->foreign('PredmetId')->references('id')->on('predmets');
-            $table->foreign('RazredId')->references('id')->on('razreds');
+            $table->foreign('predmetId')->references('id')->on('predmets');
+            $table->foreign('razredId')->references('id')->on('razreds');
         });
     }
 

@@ -9,8 +9,8 @@ class PredmetRazred extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'predmetid',
-        'razredid',
+        'predmetId',
+        'razredId',
         'fondCasova'
 
     ];

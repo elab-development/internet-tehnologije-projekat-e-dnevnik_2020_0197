@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('odeljenjes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('indeks');
-            $table->unsignedBigInteger('razredId');
-            $table->foreign('razredId')->references('id')->on('razreds');
-            
-            $table->timestamps();
-
+        Schema::table('roditeljs', function (Blueprint $table) {
+            $table->string('ime');
+            $table->string('prezime');
         });
     }
 
@@ -27,6 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('odeljenjes');
+        Schema::table('roditeljs', function (Blueprint $table) {
+            // 
+            $table->dropColumn('ime');
+            $table->dropColumn('prezime');
+        });
     }
 };

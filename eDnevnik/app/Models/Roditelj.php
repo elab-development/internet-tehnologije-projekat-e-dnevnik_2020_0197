@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Odeljenje extends Model
+class Roditelj extends Model
 {
     use HasFactory;
     protected $fillable=[
         'id',
-        'indeks',
-        'razredId'
+        'ime',
+        'prezime'
 
     ];
-
-    public function razred()
-    {
-        return $this->belongsTo(Razred::class, 'razredId');
-    }
 
 }
