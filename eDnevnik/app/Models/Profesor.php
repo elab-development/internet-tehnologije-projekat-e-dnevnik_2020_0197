@@ -10,11 +10,12 @@ class Profesor extends Model
     use HasFactory;
 
     protected $fillable=[
-        'id',
+       
         'ime',
         'prezime',
-        'predmetID'
-
+        'predmetID',
+        'username',
+        'password'
     ];
 
 }

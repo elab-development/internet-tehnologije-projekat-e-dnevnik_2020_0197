@@ -9,9 +9,11 @@ class Roditelj extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'id',
+     
         'ime',
-        'prezime'
+        'prezime',
+        'username',
+        'password'
 
     ];
 
