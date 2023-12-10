@@ -9,10 +9,13 @@ class Ucenik extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'id',
+    
         'ime',
         'prezime',
-        'odeljenjeID'
+        'odeljenjeID',
+        'username',
+        'password',
+        'email',
 
     ];
 

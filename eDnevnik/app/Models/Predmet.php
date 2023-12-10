@@ -10,7 +10,7 @@ class Predmet extends Model
     use HasFactory;
     
     protected $fillable=[
-        'id',
+    
         'naziv'
     ];
 }
