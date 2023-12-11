@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UcenikSeeder::class);
         $this->call(PredavacSeeder::class);
         $this->call(DeteSeeder::class);
+        $this->call(OcenaSeeder::class);
 
 
         // \App\Models\User::factory(10)->create();
