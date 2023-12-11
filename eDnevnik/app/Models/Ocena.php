@@ -9,6 +9,8 @@ class Ocena extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'ucenikId', 
         'predmetId', 

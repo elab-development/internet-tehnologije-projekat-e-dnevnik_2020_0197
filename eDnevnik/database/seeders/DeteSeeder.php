@@ -23,10 +23,11 @@ class DeteSeeder extends Seeder
           $roditelji=Roditelj::all();
 
           foreach($ucenici as $ucenik){
-            $roditeljUcenika=Roditelj::where('prezime', $ucenik->prezime)->first();
+            $roditeljUcenika=Roditelj::where('prezime', $ucenik->prezime)->get();
          
+            foreach($roditeljUcenika as $roditelj)
             Dete::create([
-                'roditeljId'=> $roditeljUcenika->id,
+                'roditeljId'=> $roditelj->id,
                 'ucenikId'=> $ucenik->id,
             ]);
     
@@ -35,56 +36,54 @@ class DeteSeeder extends Seeder
           DB::table('detes')->insert([
            
             [
-                'roditeljId'=>15 ,
-                'ucenikId'=> 25,
+                'roditeljId'=>1 ,
+                'ucenikId'=> 1,
             ],
             [
-                'roditeljId'=>20,
-                'ucenikId'=> 31,
+                'roditeljId'=>6,
+                'ucenikId'=> 7,
             ],
             [
-                'roditeljId'=> 20,
-                'ucenikId'=> 32,
+                'roditeljId'=> 6,
+                'ucenikId'=> 8,
             ]
             ,
             [
                 
-                'roditeljId'=> 15,
-                'ucenikId'=> 33,
+                'roditeljId'=> 1,
+                'ucenikId'=> 9,
             ]
             ,
             [
                 
-                'roditeljId'=>25 ,
-                'ucenikId'=> 36,
+                'roditeljId'=>11 ,
+                'ucenikId'=> 12,
             ]
             ,
             [
                 
-                'roditeljId'=> 25,
-                'ucenikId'=> 37,
+                'roditeljId'=> 11,
+                'ucenikId'=> 13,
             ]
             ,
             [
                 
-                'roditeljId'=> 25,
-                'ucenikId'=> 38,
+                'roditeljId'=> 11,
+                'ucenikId'=> 14,
             ]
             ,
             [
                 
-                'roditeljId'=> 15,
-                'ucenikId'=> 39,
+                'roditeljId'=> 1,
+                'ucenikId'=> 15,
             ]
             ,
             [
                 
-                'roditeljId'=> 15,
-                'ucenikId'=> 40,
+                'roditeljId'=> 1,
+                'ucenikId'=> 16,
             ]
             
-
-            // Dodajte koliko god redova želite na ovaj način.
         ]);
 
 

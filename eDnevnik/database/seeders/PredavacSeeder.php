@@ -22,21 +22,23 @@ class PredavacSeeder extends Seeder
     {
         //
         $odeljenjaPrvogRazreda = Odeljenje::where('razredId', 1)->get();
-$predmetRazrediPrvogRazreda = PredmetRazred::where('razredId', 1)->get();
+        $predmetRazrediPrvogRazreda = PredmetRazred::where('razredId', 1)->get();
 
-foreach ($odeljenjaPrvogRazreda as $odeljenje) {
-    foreach ($predmetRazrediPrvogRazreda as $pr) {
-        $predmet = Predmet::find($pr->predmetId);
-        $profesor = Profesor::where('predmetId', $predmet->id)->first();
+        foreach ($odeljenjaPrvogRazreda as $odeljenje) {
+           foreach ($predmetRazrediPrvogRazreda as $pr) {
+               $predmet = Predmet::find($pr->predmetId);
+               $profesor = Profesor::where('predmetId', $predmet->id)->first();
 
-        if ($profesor) {
-            Predavac::create([
+               if ($profesor) {
+                  Predavac::create([
                 'profesorId' => $profesor->id,
                 'odeljenjeId' => $odeljenje->id,
-            ]);
+                ]);
+               }
+
+               
+            }
         }
-    }
-}
 
 
 $odeljenjaDrugogRazreda = Odeljenje::where('razredId', 2)->get();

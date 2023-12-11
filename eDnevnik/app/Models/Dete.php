@@ -9,6 +9,8 @@ class Dete extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable=[
         'roditeljId',
         'ucenikId',
