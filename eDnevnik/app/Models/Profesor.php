@@ -13,9 +13,14 @@ class Profesor extends Model
        
         'ime',
         'prezime',
-        'predmetID',
+        'predmetId',
         'username',
         'password'
     ];
+
+    public function predmet()
+    {
+        return $this->belongsTo(Predmet::class, 'predmetId');
+    }
 
 }

@@ -12,7 +12,7 @@ class Ucenik extends Model
     
         'ime',
         'prezime',
-        'odeljenjeID',
+        'odeljenjeId',
         'username',
         'password',
         'email',
@@ -21,7 +21,7 @@ class Ucenik extends Model
 
     public function odeljenje()
     {
-        return $this->belongsTo(Odeljenje::class, 'odeljenjeID');
+        return $this->belongsTo(Odeljenje::class, 'odeljenjeId');
     }
 
 }
