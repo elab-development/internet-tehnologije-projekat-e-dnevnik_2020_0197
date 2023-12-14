@@ -23,6 +23,12 @@ class PredmetRazred extends Model
     {
         return $this->belongsTo(Razred::class, 'razredId');
     }
+
+   /* public function ocena()
+    {
+    return $this->hasMany(Ocena::class, ['predmetId', 'razredId']);
+    }
+*/
 }
 
 

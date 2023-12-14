@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ucenik extends Model
 {
     use HasFactory;
+    
+    public $timestamps = false;
+    
     protected $fillable=[
     
         'ime',

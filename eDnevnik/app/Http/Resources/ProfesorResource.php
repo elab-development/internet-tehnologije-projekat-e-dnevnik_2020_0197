@@ -20,10 +20,7 @@ class ProfesorResource extends JsonResource
         return [
             'ime' => $this->ime,
             'prezime' => $this->prezime,
-            'predmet'=>  $this->whenLoaded('predmet', function () {
-                return $this->predmet->naziv; }),
-                
-                //$this->predmetId ? $this->predmetId->naziv : null,//$this->predmetId->naziv,
+            'predmet'=> $this->predmet->naziv, 
         ];
     }
 }
