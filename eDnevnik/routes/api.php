@@ -13,6 +13,7 @@ use App\Http\Controllers\OcenaUcenikController;
 use App\Http\Controllers\OcenaUnosController;
 use App\Http\Controllers\UcenikNoviUnosController;
 use App\Http\Controllers\UcenikPromenaOdeljenjaController;
+use App\Http\Controllers\API\AuthController ;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -106,3 +107,8 @@ Route::get('ocene-iz-predmeta/{predmetId}/{ucenikId}', [OcenaUcenikController::c
 Route::post('/noviucenik', [UcenikNoviUnosController::class, 'store']);
 //ADMIN - IZMENA PODATKA O UCENIKU - PROMENA ODELJENJA
 Route::put('/izmenaucenika/{id}', [UcenikPromenaOdeljenjaController::class, 'update']);
+
+
+Route::post('/loginUcenik',[AuthController::class, 'login']);
+
+Route::post('/login-roditelj',[AuthController::class, 'loginRoditelj']);

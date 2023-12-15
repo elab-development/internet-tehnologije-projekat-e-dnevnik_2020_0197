@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\ProfesorController;
+use App\Http\Controllers\ProfesorController;
+use App\Http\Controllers\UcenikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,4 @@ use App\Http\ProfesorController;
 Route::get('/', function () {
     return view('welcome');
 });
-
 

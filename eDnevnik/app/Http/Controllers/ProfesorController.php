@@ -23,6 +23,7 @@ class ProfesorController extends Controller
         //
         $profesori=Profesor::all();
         return response()->json($profesori);
+       
     }
 
 /**

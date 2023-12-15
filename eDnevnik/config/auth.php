@@ -40,7 +40,20 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+    
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+    
+        'roditelj' => [
+            'driver' => 'token',
+            'provider' => 'roditelji',
+            'hash' => false,
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -60,16 +73,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'ucenici' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Ucenik::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        'roditelji' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Roditelj::class,
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------

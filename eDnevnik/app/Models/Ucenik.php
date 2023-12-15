@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Ucenik extends Model
+class Ucenik extends Model implements Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, Notifiable;
+
     
     public $timestamps = false;
     
