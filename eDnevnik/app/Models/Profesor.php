@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Profesor extends Model implements Authenticatable
 {
     use HasApiTokens, Notifiable, HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'ime',
@@ -18,6 +19,7 @@ class Profesor extends Model implements Authenticatable
         'predmetId',
         'username',
         'password',
+        'email'
     ];
 
     protected $hidden = [

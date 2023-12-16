@@ -11,11 +11,14 @@ class Roditelj extends Model implements Authenticatable
 {
     use HasApiTokens, Notifiable, HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'ime',
         'prezime',
         'username',
         'password',
+        'email'
     ];
 
     protected $hidden = [

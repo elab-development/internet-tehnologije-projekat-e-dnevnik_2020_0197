@@ -123,3 +123,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
     Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
 });
+
+
+
+Route::post('/registracija-ucenika', [AuthController::class, 'registracijaUcenika']);
+Route::post('/registracija-roditelja', [AuthController::class, 'registracijaRoditelja']);
+Route::post('/registracija-profesora', [AuthController::class, 'registracijaProfesora']);
