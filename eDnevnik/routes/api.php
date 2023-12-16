@@ -25,9 +25,10 @@ use App\Http\Controllers\API\AuthController ;
 |
 */
 
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 
 
@@ -52,7 +53,7 @@ Route::get('/profesori-odeljenja/{odeljenjeId}', [ProfesorController::class, 'pr
 Route::get('/predmeti', [PredmetController::class, 'index']);
 Route::get('/predmeti/{predmetId}', [PredmetController::class, 'show']);
 
-Route::get('/predmeti-odeljenja/{odeljenjeId}', [PredmetController::class, 'predmetiZaOdeljenje']);
+Route::get('/predmeti-ucenika/{ucenikId}', [PredmetController::class, 'predmetiZaUcenika'])->name('predmeti.ucenika');
 
 
 
@@ -63,7 +64,7 @@ Route::get('/odeljenja', [OdeljenjeController::class, 'index']);
 Route::get('/odeljenja/{odeljenjeId}', [OdeljenjeController::class, 'show']);
 
 //profesoru se prikazuju samo ona odeljenja kojima predaje
-Route::get('/odeljenja-profesora/{profesorId}', [OdeljenjeController::class, 'odeljenjaZaProfesora']);
+Route::get('/odeljenja-profesora/{profesorId}', [OdeljenjeController::class, 'odeljenjaZaProfesora'])->name('odeljenja.profesora');;
 
 
 
@@ -78,7 +79,7 @@ Route::post('/ucenici', [UcenikController::class, 'store']); // ????
 //
 
 //roditelj moze da vidi samo svoju decu
-Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja']);
+Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');;
 
 //profesor moze da vidi ucenike u okviru odeljenja kojima je predavac
 Route::get('/ucenici-odeljenja/{odeljenjeId}', [UcenikController::class, 'uceniciOdeljenja']);
@@ -108,7 +109,17 @@ Route::post('/noviucenik', [UcenikNoviUnosController::class, 'store']);
 //ADMIN - IZMENA PODATKA O UCENIKU - PROMENA ODELJENJA
 Route::put('/izmenaucenika/{id}', [UcenikPromenaOdeljenjaController::class, 'update']);
 
+/*
+Route::post('/login-ucenik',[AuthController::class, 'loginUcenik']);
+Route::post('/login-roditelj',[AuthController::class, 'loginRoditelj']);*/
 
-Route::post('/loginUcenik',[AuthController::class, 'login']);
+Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
+Route::post('/login-profesor', [AuthController::class, 'loginProfesor']);
+Route::post('/login-ucenik', [AuthController::class, 'loginUcenik']);
 
-Route::post('/login-roditelj',[AuthController::class, 'loginRoditelj']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::post('/logout-profesor', [AuthController::class, 'logoutProfesor']);
+    Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
+    Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
+});

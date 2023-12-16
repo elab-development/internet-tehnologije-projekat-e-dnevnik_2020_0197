@@ -34,7 +34,6 @@ return [
     | Supported: "session"
     |
     */
-
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -46,10 +45,36 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-    
         'roditelj' => [
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'roditelji',
+        ],
+    
+        'profesor' => [
+            'driver' => 'session',
+            'provider' => 'profesori',
+        ],
+    
+        'ucenik' => [
+            'driver' => 'session',
+            'provider' => 'ucenici',
+        ],
+    
+        'roditelj-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'roditelji',
+            'hash' => false,
+        ],
+    
+        'profesor-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'profesori',
+            'hash' => false,
+        ],
+    
+        'ucenik-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'ucenici',
             'hash' => false,
         ],
     ],
@@ -73,14 +98,23 @@ return [
     */
 
     'providers' => [
-        'ucenici' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Ucenik::class,
+            'model' => App\Models\User::class,
         ],
-    
         'roditelji' => [
             'driver' => 'eloquent',
             'model' => App\Models\Roditelj::class,
+        ],
+    
+        'profesori' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Profesor::class,
+        ],
+    
+        'ucenici' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Ucenik::class,
         ],
     ],
     

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Predmet;
 use Illuminate\Http\Request;
 
-
-
+use App\Models\Predmet;
+use App\Models\Ucenik;
 use App\Models\PredmetRazred;
 use App\Models\Odeljenje;
 
@@ -16,12 +15,25 @@ class PredmetController extends Controller
 {
 
 
-    public function predmetiZaOdeljenje($odeljenjeId)
+    public function predmetiZaUcenika($ucenikId)
     {
 
-        $odeljenje = Odeljenje::where('id', $odeljenjeId)->first();
+        $ucenik = Ucenik::find($ucenikId);
+        if (!$ucenik) {
+            return response()->json(['error' => 'Učenik nije pronađen'], 404);
+        }
+
+
+        //$odeljenje = Odeljenje::where('id', $odeljenjeId)->first();
+        $odeljenje = $ucenik->odeljenje;
+        if (!$odeljenje) {
+            return response()->json(['error' => 'Odeljenje nije pronađeno'], 404);
+        }
+
         $predmetirazreda = PredmetRazred::where('razredId', $odeljenje->razredId)->get();
 
+        $predmeti = [];
+        
         foreach($predmetirazreda as $predmetrazreda) {
 
             $predmet = Predmet::where('id', $predmetrazreda->predmetId)->first();

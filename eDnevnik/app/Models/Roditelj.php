@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -12,17 +11,21 @@ class Roditelj extends Model implements Authenticatable
 {
     use HasApiTokens, Notifiable, HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'ime',
         'prezime',
         'username',
-        'password'
+        'password',
     ];
 
-    // Dodaj metode koje su potrebne za Authenticatable interfejs
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     public function getAuthIdentifierName()
     {
-        return 'id'; // Ovo bi trebalo da bude ime kolone koja predstavlja identifikator roditelja
+        return 'id';
     }
 
     public function getAuthIdentifier()
@@ -37,17 +40,17 @@ class Roditelj extends Model implements Authenticatable
 
     public function getRememberToken()
     {
-        return null; // Ako ne koristiš "remember me" funkcionalnost
+        return null;
     }
 
     public function setRememberToken($value)
     {
-        // Ako ne koristiš "remember me" funkcionalnost, ova metoda može ostati prazna
+        // ...
     }
 
     public function getRememberTokenName()
     {
-        return null; // Ako ne koristiš "remember me" funkcionalnost
+        return null;
     }
 }
 
