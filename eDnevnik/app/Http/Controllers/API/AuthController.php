@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
     public function loginRoditelj(Request $request) 
     {
         if (!Auth::guard('roditelj')->attempt($request->only('username', 'password'))) {
@@ -131,11 +132,9 @@ class AuthController extends Controller
         'password' => 'required|string|min:8',
         'email' => 'required|email|unique:roditeljs',
     ]);
-
     if ($validator->fails()) {
         return response()->json(['errors' => $validator->errors()], 422);
     }
-
     $roditelj = Roditelj::create([
         'ime' => $request->ime,
         'prezime' => $request->prezime,
@@ -143,14 +142,13 @@ class AuthController extends Controller
         'password' => Hash::make($request->password),
         'email' => $request->email,
     ]);
-
     $token = $roditelj->createToken('auth_token')->plainTextToken;
     return response()->json([
         'data' => $roditelj,
         'access_token' => $token,
         'token_type' => 'Bearer',
     ]);
-}
+    }
 
 public function registracijaProfesora(Request $request)
 {
