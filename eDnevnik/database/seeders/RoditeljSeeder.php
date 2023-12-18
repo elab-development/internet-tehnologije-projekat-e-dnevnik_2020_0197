@@ -115,7 +115,7 @@ class RoditeljSeeder extends Seeder
                 'email'=> 'rasta@gmail.com',
             ]
 
-            // Dodajte koliko god redova želite na ovaj način.
+            
         ]);
 
         }

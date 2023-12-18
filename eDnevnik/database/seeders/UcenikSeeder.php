@@ -248,7 +248,7 @@ class UcenikSeeder extends Seeder
                 'email'=> 'radovan@gmail.com',
             ]
 
-            // Dodajte koliko god redova želite na ovaj način.
+            
         ]);
 
 

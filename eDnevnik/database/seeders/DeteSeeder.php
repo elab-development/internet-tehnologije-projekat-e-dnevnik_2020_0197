@@ -87,8 +87,7 @@ class DeteSeeder extends Seeder
         ]);
 
 
-
-
+        Dete::factory(20)->create();
 
     }
 }
