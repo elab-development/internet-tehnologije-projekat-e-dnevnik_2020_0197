@@ -9,7 +9,7 @@ class Razred extends Model
 {
     use HasFactory;
     protected $fillable=[
-     
+        'id',
        'godinaRazreda'
 
     ];

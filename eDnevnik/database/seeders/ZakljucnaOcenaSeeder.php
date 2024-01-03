@@ -85,7 +85,7 @@ class ZakljucnaOcenaSeeder extends Seeder
                         ]);
                 }
         
-                // Možete ovde raditi dodatne stvari sa zaključnom ocenom, npr. unos u bazu ili nešto drugo
+             
             }
         }
         

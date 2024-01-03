@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PredmetRazred;
 
 class Ocena extends Model
 {
@@ -27,7 +28,7 @@ class Ocena extends Model
     }
 
     //OVA DVA PROVERITI
-    public function predmet()
+   /* public function predmet()
     {
         return $this->belongsTo(PredmetRazred::class, 'predmetId');
     }
@@ -35,7 +36,14 @@ class Ocena extends Model
     public function razred() 
     {
         return $this->belongsTo(PredmetRazred::class,'razredId');
+    }*/
+  
+    public function predmetRazred() 
+    {
+        return $this->belongsTo(PredmetRazred::class, ['predmetId', 'razredId']);
     }
+
+    
     //I U ZAKLJUCNA OCENA ISTO
 
     public function profesor()

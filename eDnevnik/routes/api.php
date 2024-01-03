@@ -14,6 +14,9 @@ use App\Http\Controllers\OcenaUnosController;
 use App\Http\Controllers\UcenikNoviUnosController;
 use App\Http\Controllers\UcenikPromenaOdeljenjaController;
 use App\Http\Controllers\API\AuthController ;
+use App\Http\Controllers\EksportOcenaController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -68,8 +71,14 @@ Route::middleware(['roditelj'])->group(function ()
 {
     //roditelj moze da vidi samo svoju decu
     Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');;
-   
+    
 });
+
+
+
+Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
+
+
 
 
 Route::middleware(['profesor'])->group(function () 
