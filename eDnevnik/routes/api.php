@@ -41,7 +41,7 @@ Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
 
 
 
-Route::middleware(['ucenik_or_roditelj'])->group(function () 
+Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function () 
 {
     // Sve rute koje će koristiti ucenik ili roditelj
     //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
@@ -67,21 +67,16 @@ Route::middleware(['ucenik_or_roditelj'])->group(function ()
 });
 
 
-Route::middleware(['roditelj'])->group(function () 
+Route::middleware(['auth:sanctum','roditelj'])->group(function () 
 {
     //roditelj moze da vidi samo svoju decu
     Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');;
     
+    Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
 });
 
 
-
-Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
-
-
-
-
-Route::middleware(['profesor'])->group(function () 
+Route::middleware(['auth:sanctum','profesor'])->group(function () 
 {
     //profesoru se prikazuju samo ona odeljenja kojima predaje
     //profesor
@@ -99,30 +94,31 @@ Route::middleware(['profesor'])->group(function ()
 
 });
 
-Route::middleware(['ucenik'])->group(function () 
+
+Route::middleware(['auth:sanctum','ucenik'])->group(function () 
 {
     Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
 
 });
 
 
-Route::middleware(['admin'])->group(function () 
+Route::middleware(['auth:sanctum','admin'])->group(function () 
 {
     //rute za registraciju
-   
+    
     Route::post('/registracija-ucenika', [AuthController::class, 'registracijaUcenika']);
     Route::post('/registracija-roditelja', [AuthController::class, 'registracijaRoditelja']);
     Route::post('/registracija-profesora', [AuthController::class, 'registracijaProfesora']);
-
-
+    
+    
     //RUTE ZA PREGLED PROFESORA
     Route::get('/profesori', [ProfesorController::class, 'index']);
     //jedino admin ima pristup svim profesorima i svim podacima o profesorima (id, username...)
     //na ovoj ruti izlistace se svi podaci iz baze o svim profesorima
-
+    
     Route::get('/profesori/{profesorId}', [ProfesorController::class, 'show']);
-
-
+    
+    
     //RUTE ZA PREGLED PREDMETA
     //admin
     Route::get('/predmeti', [PredmetController::class, 'index']);
