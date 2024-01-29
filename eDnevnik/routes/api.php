@@ -41,7 +41,7 @@ Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
 
 
 
-Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function () 
+Route::middleware(['auth:sanctum','ucenik'])->group(function () 
 {
     // Sve rute koje će koristiti ucenik ili roditelj
     //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
@@ -62,17 +62,42 @@ Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function ()
 
     //ucenik i roditelj kada izaberu predmet mogu da vide sve ocene iz tog predmeta
     Route::get('ocene-iz-predmeta/{predmetId}/{ucenikId}', [OcenaUcenikController::class, 'oceneNaPredmetu']);
-
+    Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
 
 });
 
 
 Route::middleware(['auth:sanctum','roditelj'])->group(function () 
 {
+
     //roditelj moze da vidi samo svoju decu
     Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');;
     
     Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
+
+  // Sve rute koje će koristiti ucenik ili roditelj
+    //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
+    
+
+    //ucenik, roditelj
+    Route::get('/profesori-odeljenja/{odeljenjeId}/predmet/{predmetId}', [ProfesorController::class, 'profesorZaPredmetIOdeljenje']);
+    //ovo je ruta gde ucenik bira da mu se prikaze ime i prezime profesora koji mu drzi neki konkretan predmet
+    //u predavacu nam se cuvaju svi profesori koji predaju nekom odeljenju
+    //a u uceniku imamo spoljni kljuc ka odeljenju, tj. kom odeljenju pripada ucenik
+
+    //ucenik,roditelj
+    Route::get('/profesori-odeljenja/{odeljenjeId}', [ProfesorController::class, 'profesoriZaOdeljenje']);
+
+
+    //rod, ucenik
+    Route::get('/predmeti-ucenika/{ucenikId}', [PredmetController::class, 'predmetiZaUcenika'])->name('predmeti.ucenika');
+
+    //ucenik i roditelj kada izaberu predmet mogu da vide sve ocene iz tog predmeta
+    Route::get('ocene-iz-predmeta/{predmetId}/{ucenikId}', [OcenaUcenikController::class, 'oceneNaPredmetu']);
+
+    //LOGOUT RODITELJA FALI!!!!! RUTA SAMO..
+    Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
+
 });
 
 
@@ -94,12 +119,6 @@ Route::middleware(['auth:sanctum','profesor'])->group(function ()
 
 });
 
-
-Route::middleware(['auth:sanctum','ucenik'])->group(function () 
-{
-    Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
-
-});
 
 
 Route::middleware(['auth:sanctum','admin'])->group(function () 

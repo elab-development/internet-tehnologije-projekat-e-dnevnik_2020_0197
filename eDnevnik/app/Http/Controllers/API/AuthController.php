@@ -77,6 +77,8 @@ class AuthController extends Controller
 
     public function logoutUcenik()
     {
+
+
         auth()->guard('ucenik')->logout();
 
         return response()->json(['message' => 'Učenik uspešno odjavljen']);

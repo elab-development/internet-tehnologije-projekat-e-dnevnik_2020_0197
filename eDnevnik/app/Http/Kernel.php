@@ -76,7 +76,7 @@ class Kernel extends HttpKernel
 
 
     protected $routeMiddleware = [
-        'ucenik_or_roditelj' => \App\Http\Middleware\UcenikOrRoditeljMiddleware::class,
+     //   'ucenik_or_roditelj' => \App\Http\Middleware\UcenikOrRoditeljMiddleware::class,
         'roditelj' => \App\Http\Middleware\RoditeljMiddleware::class,
         'profesor' => \App\Http\Middleware\ProfesorMiddleware::class,
         'ucenik' => \App\Http\Middleware\UcenikMiddleware::class,
