@@ -1,0 +1,29 @@
+.odeljenja{
+   /* background-color: antiquewhite;*/
+    font-style: italic;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+  
+}
+.odeljenja h3{
+    color: #323623;
+}
+
+.dobrodosliProfesore{
+    /*background-color: rgb(122, 109, 52);*/
+    padding-top: 50px;
+   
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    
+}
+
+.dobrodosliProfesore h1{
+    color: #3a3f28;
+}
+
+body{
+
+   /* background-color:bisque ;*/
+    background-color: #f0d3c5;
+}
+
