@@ -1,3 +1,35 @@
+import slika_tinejdzer from "../img/slika_tinejdzer.jpg";
+import '../style/RoditeljHomePage.css';
+import React from 'react';
+import { useStateContext } from "../context/ContextProvider";
+import { Link } from 'react-router-dom';
+
 export default function RoditeljHomePage() {
-    return <div>Roditelj pocetna str</div>;
+
+  const { User, Token, handleRoleChange } = useStateContext();
+
+
+  
+    return <div className="sve">
+      
+      <h1 id="dobrodosliRoditelj">Dobrodosli Marina!</h1>
+      <h2 id="izaberiDete">Izaberite dete:</h2>
+    
+      <Link to="/ocene/1">
+        <img src={slika_tinejdzer} alt="Dete" id="dete1" />
+      </Link>
+      <Link to="/ocene/2">
+        <img src={slika_tinejdzer} alt="Dete" id="dete2" />
+      </Link>
+
+      <Link to="/ocene/3">
+        <img src={slika_tinejdzer} alt="Dete" id="dete3" />
+      </Link>
+      <div className="horizontalno">
+      <h3 id="ImePrezime1">Pera Peric</h3>
+      <h3 id="ImePrezime2">Mika Peric</h3>
+      <h3 id="ImePrezime3">Zika Peric</h3>
+      </div>
+
+      </div>;
   }

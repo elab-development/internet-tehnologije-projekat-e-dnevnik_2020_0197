@@ -7,6 +7,8 @@ export default function Pocetna(){
     const { setUser, setToken, handleRoleChange } = useStateContext();
     const [selectedValue, setSelectedValue] = useState('');
     const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleSelectChange = (event) => {
         setSelectedValue(event.target.value);
@@ -32,6 +34,8 @@ export default function Pocetna(){
         }
     }
 
+
+
     return (
         <div className='forma'>
             <div className='sve'>
@@ -49,6 +53,8 @@ export default function Pocetna(){
                             className="txt"
                             id="username"
                             placeholder="npr. pera.peric"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                         <br />{" "}
                         <br></br>
@@ -69,6 +75,8 @@ export default function Pocetna(){
                             name="password"
                             id="password"
                             placeholder="npr.lozinka123"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <br />{" "}
                         <br></br>

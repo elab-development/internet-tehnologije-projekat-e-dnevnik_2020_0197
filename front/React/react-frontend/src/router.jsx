@@ -23,8 +23,8 @@ const router=createBrowserRouter([
             element: <Pocetna />,
           },
           {
-          //  path: "/login",
-          //  element: <Login />,
+            path: "/",
+            element: <Pocetna />,
           },
         ],
       },
@@ -46,7 +46,8 @@ const router=createBrowserRouter([
             {
                 path:'/profesor-home',
                 element:<ProfesorHomePage/>
-            }
+            },
+            
         
         ],
     },

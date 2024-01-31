@@ -1,0 +1,65 @@
+body{
+
+   /* background-color:bisque ;*/
+    background-color: #f0d3c5;
+    font-style: italic;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+#dobrodosliRoditelj{
+padding-top: 50px;
+padding-left: 600px;
+}
+
+#izaberiDete{
+    padding-left: 650px;
+    }
+    
+#dete1{
+  
+    margin-left: 230px;
+    margin-top: 30px;
+   border-radius: 10px; 
+   width: 180px; 
+   height: 250px; 
+}    
+
+#dete2{
+  
+    margin-left: 230px;
+    margin-top: 30px;
+   border-radius: 10px; 
+   width: 180px; 
+   height: 250px; 
+}    
+
+#dete3{
+  
+    margin-left: 230px;
+    margin-top: 30px;
+   border-radius: 10px; 
+   width: 180px; 
+   height: 250px; 
+}    
+
+#ImePrezime1{
+    margin-left: 270px;
+   
+}
+
+#ImePrezime2{
+    margin-left: 320px;  
+}
+#ImePrezime3{
+    margin-left: 320px;  
+}
+
+.horizontalno {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* Opciono: Dodajte margine između elemenata ako želite razmak između njih */
+  .horizontalno h3 {
+    margin-right: 10px;
+  }
