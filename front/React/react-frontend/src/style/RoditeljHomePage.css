@@ -8,16 +8,19 @@ body{
 
 #dobrodosliRoditelj{
 padding-top: 50px;
-padding-left: 600px;
+/*padding-left: 600px;*/
+text-align: center;
 }
 
 #izaberiDete{
-    padding-left: 650px;
+    /*padding-left: 650px;*/
+    text-align: center;
+    padding-right: 5px;
     }
     
 #dete1{
   
-    margin-left: 230px;
+    margin-left: 250px;
     margin-top: 30px;
    border-radius: 10px; 
    width: 180px; 
@@ -26,7 +29,7 @@ padding-left: 600px;
 
 #dete2{
   
-    margin-left: 230px;
+    margin-left: 250px;
     margin-top: 30px;
    border-radius: 10px; 
    width: 180px; 
@@ -35,7 +38,7 @@ padding-left: 600px;
 
 #dete3{
   
-    margin-left: 230px;
+    margin-left: 250px;
     margin-top: 30px;
    border-radius: 10px; 
    width: 180px; 
@@ -43,15 +46,15 @@ padding-left: 600px;
 }    
 
 #ImePrezime1{
-    margin-left: 270px;
+    margin-left: 300px;
    
 }
 
 #ImePrezime2{
-    margin-left: 320px;  
+    margin-left: 335px;  
 }
 #ImePrezime3{
-    margin-left: 320px;  
+    margin-left: 335px;  
 }
 
 .horizontalno {

@@ -10,6 +10,8 @@ import UcenikLayout from "./components/UcenikLayout";
 import ProfesorLayout from "./components/ProfesorLayout";
 import Pocetna from "./views/Pocetna";
 import GuestLayout from "./components/GuestLayout";
+import PredmetiDeteta from "./views/PredmetiDeteta";
+import OceneDeteta from "./views/OceneDeteta";
 
 
 const router=createBrowserRouter([
@@ -47,7 +49,14 @@ const router=createBrowserRouter([
                 path:'/profesor-home',
                 element:<ProfesorHomePage/>
             },
-            
+            {
+                path:'/predmeti/:id',
+                element:<PredmetiDeteta/>
+            },
+            {
+                path:'/ocene/:id/:id',
+                element:<OceneDeteta/>
+            },
         
         ],
     },

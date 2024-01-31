@@ -1,0 +1,19 @@
+#predmetiDeteta{
+    background-color: rgba(250, 235, 215, 0.866);
+    text-align: center;
+    font-size: xx-large;
+}
+
+#tabelaPredmeta{
+    margin-top: 10px;
+  margin-left: 600px;
+  font-size: large;
+  line-height: 30px;
+  border-spacing: 20px;
+  text-align: center;
+}
+
+.linkovi{
+    text-decoration: none; 
+    color: inherit; 
+}

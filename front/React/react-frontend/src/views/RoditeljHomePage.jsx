@@ -15,14 +15,15 @@ export default function RoditeljHomePage() {
       <h1 id="dobrodosliRoditelj">Dobrodosli Marina!</h1>
       <h2 id="izaberiDete">Izaberite dete:</h2>
     
-      <Link to="/ocene/1">
+    
+      <Link to="/predmeti/1">
         <img src={slika_tinejdzer} alt="Dete" id="dete1" />
       </Link>
-      <Link to="/ocene/2">
+      <Link to="/predmeti/2">
         <img src={slika_tinejdzer} alt="Dete" id="dete2" />
       </Link>
 
-      <Link to="/ocene/3">
+      <Link to="/predmeti/3">
         <img src={slika_tinejdzer} alt="Dete" id="dete3" />
       </Link>
       <div className="horizontalno">
