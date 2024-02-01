@@ -1,5 +1,5 @@
 #navigacioni-meni {
-    background-color: rgb(72, 88, 69); /* Postavite vašu boju */
+    background-color: rgb(40, 82, 72); /* Postavite vašu boju */
     width: 100%;
     position: fixed;
     top: 0;
@@ -24,7 +24,9 @@
   }
   
   .CeoNavigacioniMeni li {
-    float: left; /*da bude sa leve strane*/
+    float: left; 
+    color:beige;
+    padding: 14px 16px;/*da bude sa leve strane*/
   }
   
   .CeoNavigacioniMeni li a {
@@ -36,5 +38,13 @@
   .CeoNavigacioniMeni li a:hover {
     background-color: rgb(109, 123, 106);
     color: white;
+  }
+
+  li.logo {
+    
+    font-weight: bold; 
+    font-size: 20px; 
+    padding: 14px 16px;
+    top:40px;
   }
   

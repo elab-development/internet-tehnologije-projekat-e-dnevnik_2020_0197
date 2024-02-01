@@ -40,7 +40,7 @@ export default function Pocetna(){
         <div className='forma'>
             <div className='celaForma'>
             <div className='transparentna-slika'></div>
-                <h1>Dobrodosli!</h1>
+                <h1>Dobro dosli!</h1>
                 <h4>Ulogujte se na eDnevnik</h4>
                 <form id="tekstForme">
                     <div>

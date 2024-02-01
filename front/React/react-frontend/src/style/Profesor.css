@@ -12,6 +12,10 @@
 
 }
 
+.pozadina{
+    background-image: linear-gradient(rgb(255, 254, 254), #3fafcb, white);
+}
+
 .dobrodosliProfesore{
     /*background-color: rgb(122, 109, 52);*/
     padding-top: 50px;

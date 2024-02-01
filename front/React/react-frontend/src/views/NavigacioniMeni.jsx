@@ -10,21 +10,26 @@ const{role}=useStateContext();
     <nav className='CeoNavigacioniMeni'>
       <ul>
         
+      <li className='logo'>eDnevnik</li>
+
         {role === 'Ucenik' && (
           <li>
             <Link to='/ucenik-home'>Pocetna</Link>
           </li>
         )}
+
         {role === 'Profesor' && (
           <li>
             <Link to='/profesor-home'>Pocetna</Link>
           </li>
         )}
+
         {role === 'Roditelj' && (
           <li>
             <Link to='/roditelj-home'>Pocetna</Link>
           </li>
         )}
+
         <li>
           <Link to='/'>Log Out</Link>
         </li>

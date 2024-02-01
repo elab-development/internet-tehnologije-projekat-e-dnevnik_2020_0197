@@ -62,8 +62,8 @@ return (
 const ProfesorHomePage = () => {
   return (
      
-    <div>
-      <h1  className='dobrodosliProfesore'>Dobrodošli profesore!</h1>
+    <div id="pozadina">
+      <h1  className='dobrodosliProfesore'>Dobro došli profesore!</h1>
       {/* Dodajte ostale elemente ili komponente koje želite na ProfesorHomePage */}
       <ProfesorOdeljenja />
     </div>

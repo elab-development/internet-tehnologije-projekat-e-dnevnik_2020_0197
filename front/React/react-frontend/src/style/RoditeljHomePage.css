@@ -6,6 +6,11 @@ body{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
+.sve {
+    background-image: linear-gradient(rgb(255, 254, 254), #3fafcb, white);
+    padding-bottom: 120px;
+}
+
 #dobrodosliRoditelj{
 padding-top: 50px;
 /*padding-left: 600px;*/

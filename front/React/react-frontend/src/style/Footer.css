@@ -1,0 +1,25 @@
+.Footer {
+    background-color: rgb(47, 120, 128);
+    padding: 10px 0;
+    position: fixed;
+    padding-top:15px;
+    margin-top: 30px;
+    bottom: 0;
+    width: 100%;
+  
+  }
+  
+  .FooterContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .FooterText {
+    font-weight: bold;
+  }
+  
+  .LogoutLink {
+    text-align: right;
+  }
+  

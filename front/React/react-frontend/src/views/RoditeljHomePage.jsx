@@ -1,4 +1,5 @@
 import slika_tinejdzer from "../img/slika_tinejdzer.jpg";
+import slika_tinejdzer2 from "../img/slika_tinejdzer2.jpg";
 import '../style/RoditeljHomePage.css';
 import React from 'react';
 import { useStateContext } from "../context/ContextProvider";
@@ -12,6 +13,7 @@ export default function RoditeljHomePage() {
   
     return <div className="sve">
       
+      <br></br>
       <h1 id="dobrodosliRoditelj">Dobrodosli Marina!</h1>
       <h2 id="izaberiDete">Izaberite dete:</h2>
     

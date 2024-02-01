@@ -1,20 +1,30 @@
+*{
+    font-family: Geneva, Tahoma, sans-serif;
+}
+
+#pozadina{
+  /*  background-color: #e9fbfb; */
+  background-image: linear-gradient(white, #3fafcb, white);
+}
 #predmetiDeteta{
     margin-top: 70px;
-    background-color: #e9fbfb;/*rgba(250, 235, 215, 0.866);*/
-    text-align: center;
+    margin-left: 280px;
+   /* background-color: #e9fbfb;/*rgba(250, 235, 215, 0.866);*/
+    text-align: left;
     font-size: xx-large;
 }
 
 #tabelaPredmeta{
-    margin-top: 7px;
-  margin-left: 600px;
+   
+  /*margin-top: 7px;*/
+  margin-left: 300px;
   font-size: large;
   line-height: 30px;
   border-spacing: 15px;
   text-align: center;
 
   margin-top: 30px!important;
-  padding: 20px;
+ /* padding: 20px; */
   border: 2px solid #333;
   border-radius: 10px;
   width: 450px;
@@ -22,6 +32,22 @@
   background-color: #fff; 
 
 }
+
+#container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #izostanci {
+    flex-grow: 1;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: #fff;
+   
+
+  }
 
 .linkovi{
     text-decoration: none; 

@@ -26,6 +26,7 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useStateContext } from '../context/ContextProvider';
 import NavigacioniMeni from '../views/NavigacioniMeni';
+import Footer from '../views/Footer';
 
 
 const DefaultLayout = ({ children }) => {
@@ -46,6 +47,7 @@ const DefaultLayout = ({ children }) => {
         {children}
       </div>
       <Outlet/>
+      <Footer />
     </div>
 
   );
