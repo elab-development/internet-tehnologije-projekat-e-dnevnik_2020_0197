@@ -15,12 +15,14 @@
     color: white; /* Postavi boju linkova */
     text-decoration: none; /* Ukloni podvučenje linkova */
     font-size: large;
+   
   }
   
   .CeoNavigacioniMeni ul {
     list-style-type: none;
     margin: 0;
     padding: 0; /*da ne bude ruzno postavljen na sredini*/
+    
   }
   
   .CeoNavigacioniMeni li {
@@ -33,11 +35,13 @@
     display: block;
     color:beige;
     padding: 14px 16px;
+    
   }
   
   .CeoNavigacioniMeni li a:hover {
     background-color: rgb(109, 123, 106);
     color: white;
+
   }
 
   li.logo {

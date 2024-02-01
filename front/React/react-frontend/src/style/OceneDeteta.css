@@ -29,4 +29,6 @@
     padding-right: 550px;
   }
   
- 
+ body{
+  background-image: linear-gradient(white, #3fafcb, white);
+ }
