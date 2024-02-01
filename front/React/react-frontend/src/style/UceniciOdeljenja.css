@@ -1,0 +1,30 @@
+.txtUcenici{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.odeljenje-okvir-za-ucenike{
+    margin-top: 20px; /* Smanjio sam margin-top radi lakšeg praćenja u primeru */
+    margin-right: 50px;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    width: 200px;
+    margin-bottom: 20px; /* Dodao sam margin-bottom radi razdvajanja okvira */
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; /* Postavljanje orijentacije na horizontalno */
+    justify-content: space-between; /* Poravnanje elemenata na krajeve okvira */
+    align-items: center; /* Centriranje vertikalno */
+
+
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.SviUcenici{
+    display: flex;
+    justify-content: space-around; /* ili space-between, zavisno od željenog rasporeda */
+    flex-wrap: wrap;
+}

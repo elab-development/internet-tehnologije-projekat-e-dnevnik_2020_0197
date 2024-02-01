@@ -38,7 +38,8 @@ export default function Pocetna(){
 
     return (
         <div className='forma'>
-            <div className='sve'>
+            <div className='celaForma'>
+            <div className='transparentna-slika'></div>
                 <h1>Dobrodosli!</h1>
                 <h4>Ulogujte se na eDnevnik</h4>
                 <form id="tekstForme">
@@ -57,7 +58,6 @@ export default function Pocetna(){
                             onChange={(e) => setUsername(e.target.value)}
                         />
                         <br />{" "}
-                        <br></br>
                         <span
                             style={{ fontSize: "small", display: "none", color: "red" }}
                             id="username-error"
@@ -91,7 +91,7 @@ export default function Pocetna(){
 
                 <label htmlFor="combo-box"> <span style={{ color: "red" }}>*</span>Izaberite opciju </label>
                 <select id="combo-box" value={selectedValue} onChange={handleSelectChange}>
-                    <option value=""> Izaberite opciju</option>
+                    <option disabled hidden value=""> Izaberite opciju</option>
                     <option value="Roditelj">Roditelj</option>
                     <option value="Ucenik">Ucenik</option>
                     <option value="Profesor">Profesor</option>

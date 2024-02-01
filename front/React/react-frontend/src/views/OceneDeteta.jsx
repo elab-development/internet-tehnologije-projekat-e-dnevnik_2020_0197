@@ -49,9 +49,9 @@ export default function OceneDeteta() {
           </tbody>
           <tfoot>
           <tr>
-            <td colSpan="2" id="prosecnaOcena">Prosečna ocena:</td>
-            <td>{prosecnaOcena}</td>
+           <td colSpan="2" id="prosecnaOcena">Prosečna ocena: &nbsp;  &nbsp; &nbsp;{prosecnaOcena}</td>
           </tr>
+          
         </tfoot>
         </table>
         

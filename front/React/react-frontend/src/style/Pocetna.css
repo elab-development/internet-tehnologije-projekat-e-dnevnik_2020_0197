@@ -1,5 +1,29 @@
+/*background: url('../img/school-photo.jpeg');*/
+
+
+.transparentna-slika {
+  background: url('../img/learning.jpg') center/cover no-repeat; /* Postavljamo sliku kao pozadinu */
+  background-color: rgba(240, 211, 197, 0.5); /* Dodajemo transparentnost boje */
+  width: 100%; /* Podešavamo širinu elementa */
+  height: 100%; /* Podešavamo visinu elementa (u ovom primeru na visinu ekrana) */
+  position: fixed; /* Fiksiramo sliku na pozadinu */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Postavljamo z-index na -1 kako bi bila iza ostalih elemenata na stranici */
+}
+
+/* Dodatni stilovi za druge elemente na stranici */
 body {
-    background-color: #f0d3c5;
+  margin: 0;
+  padding: 0;
+  background-color: #f0d3c5; /* Postavljamo boju pozadine stranice  #f0d3c5; */
+  /* Dodatni stilovi za body */
+}
+
+
+
+body {
+    background-color: #cee9f0; /* #cee9f0;*/
     margin: 0;
     padding: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -43,3 +67,6 @@ body {
     margin-bottom: 10px;
   }
   
+  .celaForma{
+    text-align: center!important;
+  }

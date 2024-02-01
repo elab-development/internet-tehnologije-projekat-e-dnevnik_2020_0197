@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 export default function PredmetiDeteta() {
-  const {id}=useParams();
+  const { id = 7 } = useParams();
+
 
   const predmeti = [
     { id:1, naziv: 'Matematika', profesor: 'Pera Perić' },
@@ -30,6 +31,7 @@ export default function PredmetiDeteta() {
             <tr>
               <th>Naziv predmeta</th>
               <th>Naziv profesora</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -44,6 +46,12 @@ export default function PredmetiDeteta() {
             ))}
           </tbody>
         </table>
+
+     { /*  <div>
+        <h3 id="txtPdfFormat">Da li zelite da vam se prikazu sve ocene u pdf formatu?</h3>
+        <p id="OdgovorPdfFormat">DA</p>
+        </div>
+            */}
       </div>
     );
   };

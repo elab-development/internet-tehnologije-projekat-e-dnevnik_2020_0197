@@ -12,6 +12,7 @@ import Pocetna from "./views/Pocetna";
 import GuestLayout from "./components/GuestLayout";
 import PredmetiDeteta from "./views/PredmetiDeteta";
 import OceneDeteta from "./views/OceneDeteta";
+import UceniciOdeljenja from "./views/UceniciOdeljenja";
 
 
 const router=createBrowserRouter([
@@ -43,7 +44,7 @@ const router=createBrowserRouter([
             },
             {
                 path:'/ucenik-home',
-                element:<UcenikHomePage/>
+                element:<PredmetiDeteta/>
             },
             {
                 path:'/profesor-home',
@@ -57,7 +58,14 @@ const router=createBrowserRouter([
                 path:'/ocene/:id/:id',
                 element:<OceneDeteta/>
             },
-        
+            {
+                path:'/odeljenje/:id/',
+                element:<UceniciOdeljenja/>
+            },
+            {
+                path:'/odeljenje/:id/:id',
+                element:<OceneDeteta/>
+            },
         ],
     },
     {

@@ -1,11 +1,15 @@
+/*OVO JE CSS STRANICA ZA HOME-PAGE-PROFESORA*/
+
 .odeljenja{
    /* background-color: antiquewhite;*/
     font-style: italic;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
   
 }
-.odeljenja h3{
+.odeljenja{
     color: #323623;
+    text-align: center;
+
 }
 
 .dobrodosliProfesore{
@@ -14,11 +18,16 @@
    
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: italic;
-    
-}
-
-.dobrodosliProfesore h1{
     color: #3a3f28;
+    text-align: center;
+    margin-top: 100px!important;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    width: 600px;
+    margin: 0 auto;
+    background-color: #fff; 
+    
 }
 
 body{
@@ -26,4 +35,32 @@ body{
    /* background-color:bisque ;*/
     background-color: #f0d3c5;
 }
+
+
+.odeljenje-okvir {
+    margin-top: 20px; /* Smanjio sam margin-top radi lakšeg praćenja u primeru */
+    margin-right: 50px;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    width: 300px;
+    margin-bottom: 20px; /* Dodao sam margin-bottom radi razdvajanja okvira */
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; /* Postavljanje orijentacije na horizontalno */
+    justify-content: space-between; /* Poravnanje elemenata na krajeve okvira */
+    align-items: center; /* Centriranje vertikalno */
+
+
+    text-decoration: none; 
+    color: inherit; 
+  }
+
+  .spoljniKont{
+    display: flex;
+    justify-content: space-around; /* ili space-between, zavisno od željenog rasporeda */
+    flex-wrap: wrap;
+  }
+  
 

@@ -1,0 +1,40 @@
+#navigacioni-meni {
+    background-color: rgb(72, 88, 69); /* Postavite vašu boju */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Postavite željeni z-index kako biste ga postavili iznad ostalih elemenata */
+  }
+  
+  #glavni-sadrzaj {
+    margin-top: 40px; /* Ovde postavite visinu vašeg navigacionog menija kako biste izbegli preklapanje */
+  }
+
+  #navigacioni-meni a {
+    color: white; /* Postavi boju linkova */
+    text-decoration: none; /* Ukloni podvučenje linkova */
+    font-size: large;
+  }
+  
+  .CeoNavigacioniMeni ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; /*da ne bude ruzno postavljen na sredini*/
+  }
+  
+  .CeoNavigacioniMeni li {
+    float: left; /*da bude sa leve strane*/
+  }
+  
+  .CeoNavigacioniMeni li a {
+    display: block;
+    color:beige;
+    padding: 14px 16px;
+  }
+  
+  .CeoNavigacioniMeni li a:hover {
+    background-color: rgb(109, 123, 106);
+    color: white;
+  }
+  
