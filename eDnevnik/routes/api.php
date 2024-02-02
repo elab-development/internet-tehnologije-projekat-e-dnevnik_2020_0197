@@ -137,52 +137,52 @@ Route::middleware(['auth:sanctum','admin'])->group(function ()
 {
     //rute za registraciju
     
-    Route::post('/registracija-ucenika', [AuthController::class, 'registracijaUcenika']);
-    Route::post('/registracija-roditelja', [AuthController::class, 'registracijaRoditelja']);
-    Route::post('/registracija-profesora', [AuthController::class, 'registracijaProfesora']);
     
-    
-    //RUTE ZA PREGLED PROFESORA
-    Route::get('/profesori', [ProfesorController::class, 'index']);
-    //jedino admin ima pristup svim profesorima i svim podacima o profesorima (id, username...)
-    //na ovoj ruti izlistace se svi podaci iz baze o svim profesorima
-    
-    Route::get('/profesori/{profesorId}', [ProfesorController::class, 'show']);
-    
-    
-    //RUTE ZA PREGLED PREDMETA
-    //admin
-   //ODKOMENTARISATI ZA PROJEKAT Route::get('/predmeti', [PredmetController::class, 'index']);
-    //admin
-    Route::get('/predmeti/{predmetId}', [PredmetController::class, 'show']);
-
-
-
-    //RUTE ZA PREGLED ODELJENJA
-
-    //admin moze da vidi sva odeljenja u sistemu
-    Route::get('/odeljenja', [OdeljenjeController::class, 'index']);
-    Route::get('/odeljenja/{odeljenjeId}', [OdeljenjeController::class, 'show']);
-
-
-
-    //RUTE ZA PREGLED UCENIKA
-
-    //admin moze da vidi sve ucenike
-    Route::get('/ucenici', [UcenikController::class, 'index']);
-    Route::get('/ucenici/{ucenikId}', [UcenikController::class, 'show']);
-
-    //admin moze da kreira novog ucenika, da izmeni postojeceg ili da obrise ucenika?
-    Route::post('/ucenici', [UcenikController::class, 'store']); // ????
-
-    //RUTE ZA OCENE - uraditi sa resource ne sa get
-
-    //admin moze da vidi sve ocene
-    Route::resource('ocene', OcenaController::class);
-
-    //ADMIN - DODAVANJE NOVOG UCENIKA U BAZU
-    Route::post('/noviucenik', [UcenikNoviUnosController::class, 'store']);
-    //ADMIN - IZMENA PODATKA O UCENIKU - PROMENA ODELJENJA
-    Route::put('/izmenaucenika/{id}', [UcenikPromenaOdeljenjaController::class, 'update']);
-
 });
+Route::post('/registracija-ucenika', [AuthController::class, 'registracijaUcenika']);
+Route::post('/registracija-roditelja', [AuthController::class, 'registracijaRoditelja']);
+Route::post('/registracija-profesora', [AuthController::class, 'registracijaProfesora']);
+
+
+//RUTE ZA PREGLED PROFESORA
+Route::get('/profesori', [ProfesorController::class, 'index']);
+//jedino admin ima pristup svim profesorima i svim podacima o profesorima (id, username...)
+//na ovoj ruti izlistace se svi podaci iz baze o svim profesorima
+
+Route::get('/profesori/{profesorId}', [ProfesorController::class, 'show']);
+
+
+//RUTE ZA PREGLED PREDMETA
+//admin
+//ODKOMENTARISATI ZA PROJEKAT Route::get('/predmeti', [PredmetController::class, 'index']);
+//admin
+Route::get('/predmeti/{predmetId}', [PredmetController::class, 'show']);
+
+
+
+//RUTE ZA PREGLED ODELJENJA
+
+//admin moze da vidi sva odeljenja u sistemu
+Route::get('/odeljenja', [OdeljenjeController::class, 'index']);
+Route::get('/odeljenja/{odeljenjeId}', [OdeljenjeController::class, 'show']);
+
+
+
+//RUTE ZA PREGLED UCENIKA
+
+//admin moze da vidi sve ucenike
+Route::get('/ucenici', [UcenikController::class, 'index']);
+Route::get('/ucenici/{ucenikId}', [UcenikController::class, 'show']);
+
+//admin moze da kreira novog ucenika, da izmeni postojeceg ili da obrise ucenika?
+Route::post('/ucenici', [UcenikController::class, 'store']); // ????
+
+//RUTE ZA OCENE - uraditi sa resource ne sa get
+
+//admin moze da vidi sve ocene
+Route::resource('ocene', OcenaController::class);
+
+//ADMIN - DODAVANJE NOVOG UCENIKA U BAZU
+Route::post('/noviucenik', [UcenikNoviUnosController::class, 'store']);
+//ADMIN - IZMENA PODATKA O UCENIKU - PROMENA ODELJENJA
+Route::put('/izmenaucenika/{id}', [UcenikPromenaOdeljenjaController::class, 'update']);
