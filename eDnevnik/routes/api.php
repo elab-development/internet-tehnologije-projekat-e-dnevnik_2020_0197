@@ -42,7 +42,8 @@ Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
 //VRATITI OVU RUTU DA MOZE SAMO ADMIN ZA PROJEKAT
 Route::get('/predmeti', [PredmetController::class, 'index']);
 
-Route::middleware(['auth:sanctum','ucenik'])->group(function () 
+Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function ()
+//Route::middleware(['auth:sanctum','ucenik'])->group(function () 
 {
     // Sve rute koje će koristiti ucenik ili roditelj
     //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
@@ -63,7 +64,7 @@ Route::middleware(['auth:sanctum','ucenik'])->group(function ()
 
     //ucenik i roditelj kada izaberu predmet mogu da vide sve ocene iz tog predmeta
     Route::get('ocene-iz-predmeta/{predmetId}/{ucenikId}', [OcenaUcenikController::class, 'oceneNaPredmetu']);
-    Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
+    
 
 });
 
@@ -76,6 +77,10 @@ Route::middleware(['auth:sanctum','roditelj'])->group(function ()
     
     Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
 
+    //LOGOUT RODITELJA FUNKCIJA FALI!!!!! OVO JE RUTA SAMO..
+    Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
+/*
+OVO JE ONO STO NAM JE PRAVILO PROBLEM:
   // Sve rute koje će koristiti ucenik ili roditelj
     //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
     
@@ -98,6 +103,12 @@ Route::middleware(['auth:sanctum','roditelj'])->group(function ()
 
     //LOGOUT RODITELJA FALI!!!!! RUTA SAMO..
     Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
+*/
+});
+
+Route::middleware(['auth:sanctum','ucenik'])->group(function () 
+{
+    Route::post('/logout-ucenik', [AuthController::class, 'logoutUcenik']);
 
 });
 
