@@ -13,6 +13,7 @@ import GuestLayout from "./components/GuestLayout";
 import PredmetiDeteta from "./views/PredmetiDeteta";
 import OceneDeteta from "./views/OceneDeteta";
 import UceniciOdeljenja from "./views/UceniciOdeljenja";
+import Informacije from "./views/Informacije";
 
 
 const router=createBrowserRouter([
@@ -65,6 +66,10 @@ const router=createBrowserRouter([
             {
                 path:'/odeljenje/:id/:id',
                 element:<OceneDeteta/>
+            },
+            {
+                path:'/info',
+                element:<Informacije/>
             },
         ],
     },

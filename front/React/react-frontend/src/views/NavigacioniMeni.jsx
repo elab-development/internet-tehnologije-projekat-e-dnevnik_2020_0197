@@ -4,7 +4,7 @@ import '../style/NavigacioniMeni.css';
 import { useStateContext } from '../context/ContextProvider';
 
 const NavigacioniMeni = () => {
-const{role}=useStateContext();
+  const { role, handleLogout } = useStateContext();
     
   return (
     <nav className='CeoNavigacioniMeni'>
@@ -30,10 +30,18 @@ const{role}=useStateContext();
           </li>
         )}
 
+      {['Ucenik', 'Profesor', 'Roditelj'].includes(role) && (
+      <li>
+        <Link to='/info'>Informacije</Link>
+      </li>
+      )}
+
         <li>
-          <Link to='/'>Log Out</Link>
+          <Link to='/' 
+          onClick={handleLogout} 
+          style={{ float: 'right', marginLeft:'900px'}}>
+            Kraj rada</Link>
         </li>
-        {/* Dodaj još opcija u zavisnosti od uloge */}
       </ul>
     </nav>
   );

@@ -1,7 +1,7 @@
-export default function ProfesorLayout(){
+/*export default function ProfesorLayout(){
     return (
         <div>
 
         </div>
         
-        )}
+        )}*/

@@ -5,16 +5,46 @@ import React from 'react';
 import { useStateContext } from "../context/ContextProvider";
 import { Link } from 'react-router-dom';
 
+
 export default function RoditeljHomePage() {
 
   const { User, Token, handleRoleChange } = useStateContext();
+  const { role } = useStateContext();
 
+  if (role !== 'Roditelj') {
+    
+    return (
 
+      <h2 style={{
+        padding: '20px',
+        
+        paddingTop: '300px',
+        paddingBottom: '300px',
+        border: '2px solid #333',
+        borderRadius: '10px',
+        width: '600px',
+        margin: '0 auto',
+        marginTop:'300px',
+        backgroundColor: '#fff',
+        fontFamily: 'Cambria, Cochin, Georgia, Times, Times New Roman, serif',
+        fontStyle: 'italic',
+        color: '#3a3f28',
+        textAlign: 'center',
+        marginTop: '80px!important',
+      }}>
+        Nemate pristup ovoj stranici.
+        <br />
+        <br />
+        Vratite se na login stranicu pritiskom na Kraj rada.
+      </h2>
+    );
+    
+  }
   
     return <div className="sve">
       
       <br></br>
-      <h1 id="dobrodosliRoditelj">Dobrodosli Marina!</h1>
+      <h1 id="dobrodosliRoditelj">Dobro dosli Marina!</h1>
       <h2 id="izaberiDete">Izaberite dete:</h2>
     
     

@@ -2,10 +2,12 @@ import { useParams } from 'react-router-dom';
 import '../style/PredmetiDeteta.css';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { useStateContext } from '../context/ContextProvider';
 
 export default function PredmetiDeteta() {
   const { id = 7 } = useParams();
 
+  const { role } = useStateContext();
 
   const predmeti = [
     { id:1, naziv: 'Matematika', profesor: 'Pera Perić' },
@@ -42,7 +44,35 @@ export default function PredmetiDeteta() {
     }
   };
 
-  
+  if (role !== 'Roditelj' && role!=='Ucenik') {
+    
+    return (
+
+      <h2 style={{
+        padding: '20px',
+        
+        paddingTop: '300px',
+        paddingBottom: '300px',
+        border: '2px solid #333',
+        borderRadius: '10px',
+        width: '600px',
+        margin: '0 auto',
+        marginTop:'300px',
+        backgroundColor: '#fff',
+        fontFamily: 'Cambria, Cochin, Georgia, Times, Times New Roman, serif',
+        fontStyle: 'italic',
+        color: '#3a3f28',
+        textAlign: 'center',
+        marginTop: '80px!important',
+      }}>
+        Nemate pristup ovoj stranici.
+        <br />
+        <br />
+        Vratite se na login stranicu pritiskom na Kraj rada.
+      </h2>
+    );
+    
+  }
 
     return (
       <div id="pozadina">

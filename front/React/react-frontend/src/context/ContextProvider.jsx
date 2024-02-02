@@ -33,6 +33,13 @@ export const ContextProvider = ({ children }) => {
        // }
             setRole(selectedRole);
     };
+
+    const handleLogout = () => {
+      // Postavljamo token, korisnika i ulogu na početne vrednosti
+      setTokenAndLocalStorage(null);
+      setUserAndRole({});
+      setRole("");
+    };
   
     return (
       <StateContext.Provider value={{

@@ -44,9 +44,10 @@ const DefaultLayout = ({ children }) => {
         <NavigacioniMeni />
       </div>
       <div id="glavni-sadrzaj">
-        {children}
+        {children} 
+        <Outlet/>
       </div>
-      <Outlet/>
+     
       <Footer />
     </div>
 

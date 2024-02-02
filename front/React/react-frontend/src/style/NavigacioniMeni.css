@@ -8,8 +8,10 @@
   }
   
   #glavni-sadrzaj {
-    margin-top: 40px; /* Ovde postavite visinu vašeg navigacionog menija kako biste izbegli preklapanje */
+   margin-top: 40px; /* Ovde postavite visinu vašeg navigacionog menija kako biste izbegli preklapanje */
+   
   }
+
 
   #navigacioni-meni a {
     color: white; /* Postavi boju linkova */

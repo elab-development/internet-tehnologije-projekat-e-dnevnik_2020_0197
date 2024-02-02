@@ -39,7 +39,8 @@ Route::post('/login-ucenik', [AuthController::class, 'loginUcenik']);
 Route::post('/login-profesor', [AuthController::class, 'loginProfesor']);
 Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
 
-
+//VRATITI OVU RUTU DA MOZE SAMO ADMIN ZA PROJEKAT
+Route::get('/predmeti', [PredmetController::class, 'index']);
 
 Route::middleware(['auth:sanctum','ucenik'])->group(function () 
 {
@@ -140,7 +141,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function ()
     
     //RUTE ZA PREGLED PREDMETA
     //admin
-    Route::get('/predmeti', [PredmetController::class, 'index']);
+   //ODKOMENTARISATI ZA PROJEKAT Route::get('/predmeti', [PredmetController::class, 'index']);
     //admin
     Route::get('/predmeti/{predmetId}', [PredmetController::class, 'show']);
 

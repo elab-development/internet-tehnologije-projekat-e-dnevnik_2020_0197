@@ -13,18 +13,19 @@
 }
 
 .pozadina{
-    background-image: linear-gradient(rgb(255, 254, 254), #3fafcb, white);
+    background-color: white;
+   /* background-image: linear-gradient (rgb(255, 254, 254), #3fafcb, white); */
 }
 
 .dobrodosliProfesore{
     /*background-color: rgb(122, 109, 52);*/
-    padding-top: 50px;
+    padding-top: 40px;
    
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: italic;
     color: #3a3f28;
     text-align: center;
-    margin-top: 100px!important;
+    margin-top: 80px!important;
     padding: 20px;
     border: 2px solid #333;
     border-radius: 10px;
@@ -67,4 +68,5 @@ body{
     flex-wrap: wrap;
   }
   
+ 
 
