@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Ucenik;
 use App\Models\Roditelj;
 use App\Models\Profesor;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -67,28 +68,116 @@ class AuthController extends Controller
             'redirect_url' => route('predmeti.ucenika', ['ucenikId' => $ucenik->id]),
         ]);
     }
+/*
+    public function loginAdmin(Request $request) 
+    {
+        if (!Auth::guard('admin')->attempt($request->only('username', 'password'))) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+    
+        $admin = Auth::admin('admin')->user();
+    
+        $token = $admin->createToken('auth_token')->plainTextToken;
+    
+        return response()->json([
+            'message' => 'Hi ' . $admin->ime . ', welcome to home',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
+    }
+
+    public function registracijaAdmina(Request $request){
+
+    /*    $existingAdmin = Admin::where('email', $email)->first();
+
+      if (!$existingAdmin) {
+       // Dodaj novog admina
+       Admin::create([
+        'ime' => $ime,
+        'prezime' => $prezime,
+        'username' => $username,
+        'password' => $hashedPassword,
+        'email' => $email,
+        ]);
+        } else {
+            return response()->json(['message' => 'Vec postoji registrovan admin sa tim podacimna']);
+        } */
+
+   /*     $validator=Validator::make($request->all(),[
+            'ime'=>'required|string|max:255',
+            'prezime'=>'required|string|max:255',
+            'email' => 'required|email|unique:uceniks',
+            'username'=>'required|string|max:255|unique:uceniks',
+            'password'=>'required|string|min:8',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $admin=Admin::create([
+           'ime'=>$request->ime,
+           'prezime'=>$request->prezime, 
+           'email' => $request->email,
+           'username'=>$request->username, 
+           'password'=>Hash::make($request->password),
+            
+        ]);
+
+        $token=$admin->createToken('auth_token')->plainTextToken;
+        return response()->json([
+            'data'=>$admin,
+            'access_token'=>$token,
+            'token_type'=>'Bearer'
+        ]);
+    } */
+
     
     public function logoutProfesor()
     {
-        auth()->guard('profesor')->logout();
+      /*  auth()->guard('profesor')->logout();
 
-        return response()->json(['message' => 'Profesor uspešno odjavljen']);
+        return response()->json(['message' => 'Profesor uspešno odjavljen']); */
+
+        $profesor = auth()->user();
+        $profesor->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Profesor uspešno odjavljen',
+            'redirect_url' => route('login'),
+        ]);
     }
 
     public function logoutUcenik()
     {
 
 
-        auth()->guard('ucenik')->logout();
+       // auth()->guard('ucenik')->logout();
+       $ucenik = auth()->user();
+       $ucenik->currentAccessToken()->delete();
 
-        return response()->json(['message' => 'Učenik uspešno odjavljen']);
+     //   return response()->json(['message' => 'Učenik uspešno odjavljen']);
+
+        return response()->json([
+            'message' => 'Učenik uspešno odjavljen',
+            'redirect_url' => route('login'),
+        ]);
+
     }
 
     public function logoutRoditelj()
     {
-        auth()->guard('roditelj')->logout();
+        /*auth()->guard('roditelj')->logout();
 
-        return response()->json(['message' => 'Roditelj uspešno odjavljen']);
+        return response()->json(['message' => 'Roditelj uspešno odjavljen']);*/
+
+       $roditelj = auth()->user();
+       $roditelj->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Roditelj uspešno odjavljen',
+            'redirect_url' => route('login'),
+        ]);
+
     }
 
     

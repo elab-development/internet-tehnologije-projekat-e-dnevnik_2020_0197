@@ -31,7 +31,7 @@ export default function PredmetiDeteta() {
     { datum: '29.12', razlog: 'opravdani izostanak' },
   ];
 
-  const [filter, setFilter] = useState('svi'); // 'svi', 'opravdani', 'neopravdani'
+  const [filter, setFilter] = useState('svi'); 
 
   const filtriraniIzostanci = () => {
     if (filter === 'svi') {

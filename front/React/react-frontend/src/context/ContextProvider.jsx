@@ -10,8 +10,8 @@ const StateContext = createContext({
 
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
-    const [token, setToken] = useState(123);
-    //localStorage.getItem("ACCESS_TOKEN")
+    const [token, setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+    
     const [role, setRole] = useState("");
 
     const setTokenAndLocalStorage = (token) => {
@@ -32,6 +32,7 @@ export const ContextProvider = ({ children }) => {
         //if(role){
        // }
             setRole(selectedRole);
+            localStorage.setItem("role", selectedRole);
     };
 
     const handleLogout = () => {

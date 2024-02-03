@@ -19,11 +19,7 @@ export default function UceniciOdeljenja() {
         { id:13,ImePrezime: 'Pavle Dukic'},
         { id:14,ImePrezime: 'Nebojisa Radovanovic'},
         { id:15,ImePrezime: 'Milica Tadic'},   
-       /* { id:16,ImePrezime: 'Sofija Markovic'},
-        { id:17,ImePrezime: 'Sara Dobric'},
-        { id:18,ImePrezime: 'Biljana Lukaja'},
-        { id:19,ImePrezime: 'Filip Popovic'},
-        { id:20,ImePrezime: 'Milos Medic'}, */
+       
       ];
 
 

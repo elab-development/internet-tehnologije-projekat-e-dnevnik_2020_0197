@@ -34,9 +34,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });*/
 
 
+Route::get('/login', function () {
+    return response()->json(['Poruka' => 'Dobro dosli na login stranicu']);;
+})->name('login');
 
-Route::post('/login-ucenik', [AuthController::class, 'loginUcenik']);
-Route::post('/login-profesor', [AuthController::class, 'loginProfesor']);
+Route::post('/login-ucenik', [AuthController::class, 'loginUcenik']);  //->name('login.ucenik');
+Route::post('/login-profesor', [AuthController::class, 'loginProfesor']);//->name('login.ucenik');;
 Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
 
 //VRATITI OVU RUTU DA MOZE SAMO ADMIN ZA PROJEKAT
@@ -132,13 +135,13 @@ Route::middleware(['auth:sanctum','profesor'])->group(function ()
 });
 
 
+//Route::post('/registracija-admina', [AuthController::class, 'registracijaAdmina']);
 
 Route::middleware(['auth:sanctum','admin'])->group(function () 
 {
-    //rute za registraciju
-    
-    
+    //rute za registraciju 
 });
+
 Route::post('/registracija-ucenika', [AuthController::class, 'registracijaUcenika']);
 Route::post('/registracija-roditelja', [AuthController::class, 'registracijaRoditelja']);
 Route::post('/registracija-profesora', [AuthController::class, 'registracijaProfesora']);

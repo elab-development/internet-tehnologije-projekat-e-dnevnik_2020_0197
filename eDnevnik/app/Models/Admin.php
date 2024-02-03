@@ -9,7 +9,7 @@ class Admin extends Model
 {
     use HasFactory;
 
-    protected $table = 'admins'; // Naziv tablice u bazi podataka
+    protected $table = 'admins'; 
     public $timestamps = false; 
     protected $fillable = [
         'ime',

@@ -17,8 +17,8 @@ const Informacije = () => {
     <div style={style}>
       <h1>X gimnazija - forum</h1>
       <p>
-        Kako bi što bolje sagledali obim i dinamiku nastave, kao i obim znanja koju pruža naša škola,
-        pripremili smo vam uvid u nastavni program. Ispod možete videti spisak predmeta koji se izučavaju na opštem smeru naše gimnazije.
+        Nasa skola saradjuje sa mnogim svetskim univerzitetima. Zelja nam je da nasi ucenici imaju priliku da saradjuju sa uspesnim
+        strucnjacima iz razlicitih oblasti. Ispod mozete videti kontakt podatke nasih najistaknutijih saradnika.
       </p>
       <SviPredmeti />
     </div>

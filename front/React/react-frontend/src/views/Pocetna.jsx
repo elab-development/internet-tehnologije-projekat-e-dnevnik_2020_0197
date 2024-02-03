@@ -10,6 +10,11 @@ export default function Pocetna(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const [usernameError, setUsernameError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    const [selectedValueError, setSelectedValueError] = useState(false);
+
+
     const handleSelectChange = (event) => {
         setSelectedValue(event.target.value);
         handleRoleChange(event.target.value);
@@ -18,6 +23,14 @@ export default function Pocetna(){
     const Ulogujse = () => {
         setToken(123); // Postavljanje tokena, prilagodi..
         setUser({});
+
+        if (!username || !password || !selectedValue) {
+            
+            setUsernameError(!username);
+            setPasswordError(!password);
+            setSelectedValueError(!selectedValue);
+            return;
+        }
 
         switch (selectedValue) {
             case "Ucenik":
@@ -71,7 +84,7 @@ export default function Pocetna(){
                         </label>{" "}
                         <br />
                         <input
-                            type="text"
+                            type="password"
                             name="password"
                             id="password"
                             placeholder="npr.lozinka123"
