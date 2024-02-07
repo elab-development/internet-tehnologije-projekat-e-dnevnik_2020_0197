@@ -12,8 +12,8 @@ use PDF;
 class EksportOcenaController extends Controller
 {
     //
-        public function EksportOcena($roditeljId, $ucenikId){
-
+        public function EksportOcena(/*$roditeljId, */$ucenikId){
+            $roditeljId = auth()->id(); 
             $proveraPristupa = Dete::where('roditeljId', $roditeljId)
             ->where('ucenikId', $ucenikId)
             ->exists();

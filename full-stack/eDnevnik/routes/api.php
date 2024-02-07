@@ -83,7 +83,8 @@ Route::middleware(['auth:sanctum','roditelj'])->group(function ()
 
     Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');;
     
-    Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
+   // Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
+   Route::get('/eksport-ocena/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
 
     Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
 /*
