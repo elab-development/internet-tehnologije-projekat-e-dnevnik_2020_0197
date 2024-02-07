@@ -11,7 +11,6 @@ function PredmetiUcenik() {
     const ucenik = window.sessionStorage.getItem("ucenik_id");
     const id = parseInt(ucenik, 10);
 
-    
     const navigate = useNavigate();
 
     let [predmeti, setPredmeti] = useState([]);
@@ -41,6 +40,25 @@ function PredmetiUcenik() {
     }
 }, [token, id, navigate]);
 
+const handleExportToPdf = () => {
+  if (id) {
+    axios
+      .get('http://127.0.0.1:8000/api/eksport-ocena/'+id, { // Koristi samo id ucenika
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        responseType: 'arraybuffer',
+      })
+      .then((response) => {
+        const blob = new Blob([response.data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+};
 
         if (token === null || ucenik == null) {
             return (
@@ -67,6 +85,8 @@ function PredmetiUcenik() {
             );
         }
 
+
+
   return (
     <div>
       <NavBar/>
@@ -76,6 +96,15 @@ function PredmetiUcenik() {
         
         <PredmetiUcenikView predmet={predmet} key={predmet.id} style={{ margin: "8px",  display: "flex", justifyContent:"center" }}/>
       ))}
+       </div>
+       <div className="eksportOcenaKlasa" style={{display: "flex", justifyContent:"center", paddingTop:"30px"}}>
+
+       <button
+        type="button"
+        className="btnEksportujOcene"
+        data-mdb-ripple-init
+        onClick={handleExportToPdf}>
+        Eksportuj u pdf</button>
        </div>
     </div>
   )
