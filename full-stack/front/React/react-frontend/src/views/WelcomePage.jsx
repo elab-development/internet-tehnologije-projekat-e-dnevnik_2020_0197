@@ -8,10 +8,24 @@ function WelcomePage() {
 
   return (
     <div>
+      
       <div
         id="intro-example"
         className="p-5 text-center bg-image"
       >
+
+        <div style={{ display:"flex", justifyContent:"right"}}> 
+             <a
+                data-mdb-ripple-init
+                className="text-white small"
+                href="/admin-login"
+                target="_blank"
+                role="button"
+              >
+                Admin
+              </a>
+        </div>
+
         <div className="mask">
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="text-white">
@@ -45,8 +59,13 @@ function WelcomePage() {
               >
                 eProfesor
               </a>
+
+          
             </div>
+           
           </div>
+         
+         
         </div>
       </div>
     </div>

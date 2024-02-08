@@ -45,6 +45,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'administrator' => [
+            'driver' => 'session',
+            'provider' => 'admini',
+        ],
         'roditelj' => [
             'driver' => 'session',
             'provider' => 'roditelji',
@@ -77,6 +81,11 @@ return [
             'provider' => 'ucenici',
             'hash' => false,
         ],
+        'administrator-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'admini',
+            'hash' => false,
+        ],
     ],
     
 
@@ -101,6 +110,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'admini' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
         'roditelji' => [
             'driver' => 'eloquent',

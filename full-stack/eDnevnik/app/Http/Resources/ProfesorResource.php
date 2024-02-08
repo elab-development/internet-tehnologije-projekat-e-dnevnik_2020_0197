@@ -18,9 +18,13 @@ class ProfesorResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'ime' => $this->ime,
             'prezime' => $this->prezime,
             'predmet'=> $this->predmet->naziv, 
+            'odeljenja' => $this->odeljenja->map(function ($odeljenje) {
+                return $odeljenje->razredId . '-' . $odeljenje->indeks;
+            }),
         ];
     }
 }

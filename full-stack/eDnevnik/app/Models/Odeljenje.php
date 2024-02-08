@@ -20,4 +20,9 @@ class Odeljenje extends Model
         return $this->belongsTo(Razred::class, 'razredId');
     }
 
+    public function ucenici()
+    {
+    return $this->hasMany(Ucenik::class, 'odeljenjeId');
+    }
+
 }

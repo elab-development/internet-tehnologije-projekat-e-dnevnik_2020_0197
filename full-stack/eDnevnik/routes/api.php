@@ -41,9 +41,8 @@ Route::get('/login', function () {
 Route::post('/login-ucenik', [AuthController::class, 'loginUcenik']);  //->name('login.ucenik');
 Route::post('/login-profesor', [AuthController::class, 'loginProfesor']);//->name('login.ucenik');;
 Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
+Route::post('/login-admin', [AuthController::class, 'loginAdmin']);
 
-//VRATITI OVU RUTU DA MOZE SAMO ADMIN ZA PROJEKAT
-Route::get('/predmeti', [PredmetController::class, 'index']);
 
 Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function ()
 {
@@ -105,7 +104,7 @@ Route::middleware(['auth:sanctum','profesor'])->group(function ()
 
     //profesor moze uceniku da unese novu ocenu
     Route::post('/unosocene', [OcenaUnosController::class, 'store']);
-    
+
     Route::post('/logout-profesor', [AuthController::class, 'logoutProfesor']);
 
 });
@@ -116,7 +115,6 @@ Route::middleware(['auth:sanctum','profesor'])->group(function ()
 Route::middleware(['auth:sanctum','admin'])->group(function () 
 {
     //rute za registraciju 
-});
 
 Route::post('/registracija-ucenika', [AuthController::class, 'registracijaUcenika']);
 Route::post('/registracija-roditelja', [AuthController::class, 'registracijaRoditelja']);
@@ -132,17 +130,16 @@ Route::get('/profesori/{profesorId}', [ProfesorController::class, 'show']);
 
 
 //RUTE ZA PREGLED PREDMETA
-//admin
-//ODKOMENTARISATI ZA PROJEKAT Route::get('/predmeti', [PredmetController::class, 'index']);
-//admin
+
 Route::get('/predmeti/{predmetId}', [PredmetController::class, 'show']);
 
-
+Route::get('/predmeti', [PredmetController::class, 'index']);
 
 //RUTE ZA PREGLED ODELJENJA
 
 //admin moze da vidi sva odeljenja u sistemu
 Route::get('/odeljenja', [OdeljenjeController::class, 'index']);
+//ne koristim nikad:
 Route::get('/odeljenja/{odeljenjeId}', [OdeljenjeController::class, 'show']);
 
 
@@ -159,9 +156,15 @@ Route::post('/ucenici', [UcenikController::class, 'store']); // ????
 //RUTE ZA OCENE - uraditi sa resource ne sa get
 
 //admin moze da vidi sve ocene
-Route::resource('ocene', OcenaController::class);
+Route::resource('/ocene', OcenaController::class);
 
 //ADMIN - DODAVANJE NOVOG UCENIKA U BAZU
 Route::post('/noviucenik', [UcenikNoviUnosController::class, 'store']);
 //ADMIN - IZMENA PODATKA O UCENIKU - PROMENA ODELJENJA
 Route::put('/izmenaucenika/{id}', [UcenikPromenaOdeljenjaController::class, 'update']);
+
+Route::post('/logout-admin', [AuthController::class, 'logoutAdmin']);
+
+Route::delete('/obrisi-ocenu/{ucenikId}/{predmetId}/{razredId}/{datum}', [OcenaController::class, 'destroy']);
+
+});

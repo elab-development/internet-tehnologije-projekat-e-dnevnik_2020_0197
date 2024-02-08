@@ -19,6 +19,9 @@ class UcenikResource extends JsonResource
             'ime' => $this->ime,
             'prezime' => $this->prezime, 
             'odeljenjeId'=> $this->odeljenjeId,
+            'odeljenje' => $this->odeljenje->razred->id . '-' . $this->odeljenje->indeks,
+            'email' => $this->email, 
+            'razred'=>$this->odeljenje->razredId,
         ];
     }
 }

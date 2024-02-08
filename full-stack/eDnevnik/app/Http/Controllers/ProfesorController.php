@@ -8,6 +8,7 @@ use App\Models\Predmet;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\ProfesorResource;
+use App\Models\Odeljenje;
 
 class ProfesorController extends Controller
 {
@@ -21,8 +22,8 @@ class ProfesorController extends Controller
     public function index()
     {
         //
-        $profesori=Profesor::all();
-        return response()->json($profesori);
+        $profesori = Profesor::with('predmet', 'odeljenja')->get();
+        return ProfesorResource::collection($profesori);
        
     }
 

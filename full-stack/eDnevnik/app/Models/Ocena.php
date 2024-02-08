@@ -22,6 +22,16 @@ class Ocena extends Model
         'vrednost', 
         'profesorId'];
 
+        public function setKeysForSaveQuery($query)
+        {
+            $query
+                ->where('ucenikId', $this->ucenikId)
+                ->where('predmetId', $this->predmetId)
+                ->where('razredId', $this->razredId)
+                ->where('datum', $this->datum);
+            return $query;
+        }
+
     public function ucenik()
     {
         return $this->belongsTo(Ucenik::class, 'ucenikId');

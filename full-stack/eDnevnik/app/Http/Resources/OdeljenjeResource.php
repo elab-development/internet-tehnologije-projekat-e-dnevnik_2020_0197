@@ -18,6 +18,7 @@ class OdeljenjeResource extends JsonResource
             'id' => $this->id,
             'razred' => $this->razredId,
             'indeks' => $this->indeks,
+            'broj_ucenika' => $this->ucenici_count,
         ];
    }
 

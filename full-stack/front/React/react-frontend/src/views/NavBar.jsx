@@ -55,9 +55,14 @@ const NavBar = ({ token }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+      {roditelj_id==null && ( <Link className="navbar-brand" to="/home-ucenik">
           eDnevnik
         </Link>
+       )}
+       {roditelj_id!=null && ( <Link className="navbar-brand" to="/home-roditelj">
+          eDnevnik
+        </Link>
+       )}
         <button
           className="navbar-toggler"
           type="button"

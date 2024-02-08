@@ -42,8 +42,8 @@ class UcenikController extends Controller
     public function index()
     {
         //
-        $ucenici=Ucenik::all();
-        return response()->json($ucenici);
+        $ucenici = Ucenik::all();
+        return UcenikResource::collection($ucenici);
     }
 
     /**
@@ -91,7 +91,7 @@ class UcenikController extends Controller
         //
         $ucenik = Ucenik::find($ucenikId);
         if(is_null($ucenik)) return response()->json('Nije pronadjen ucenik po datom id-u', 404);
-        return response()->json($ucenik);
+        return new UcenikResource($ucenik);
     }
 
     /**

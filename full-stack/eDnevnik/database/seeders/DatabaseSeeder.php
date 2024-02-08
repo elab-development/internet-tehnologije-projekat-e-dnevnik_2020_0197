@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DeteSeeder::class);
         $this->call(OcenaSeeder::class);
         $this->call(ZakljucnaOcenaSeeder::class);
+        $this->call(AdminSeeder::class);
 
 
         // \App\Models\User::factory(10)->create();

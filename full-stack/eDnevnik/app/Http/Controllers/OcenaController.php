@@ -15,7 +15,7 @@ class OcenaController extends Controller
     public function index()
     {
         //
-        $ocene = Ocena::all();
+        $ocene = Ocena::orderByDesc('datum')->take(100)->get();
 
         //return OcenaResource::collection($ocene);
         return response()->json(['ocene' => OcenaResource::collection($ocene)]);
@@ -65,8 +65,22 @@ class OcenaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ocena $ocena)
+    public function destroy($ucenikId, $predmetId, $razredId, $datum)
     {
-        //
+        $ocena = Ocena::where('ucenikId', $ucenikId)
+        ->where('predmetId', $predmetId)
+        ->where('razredId', $razredId)
+        ->where('datum', $datum)
+        ->first();
+
+
+        if (!$ocena) {
+        return response()->json(['message' => 'Ocena nije pronađena.'], 404);
+        }
+
+        $ocena->delete();
+
+        return response()->json(['message' => 'Ocena je uspešno obrisana.']);
     }
+
 }

@@ -17,6 +17,14 @@ import HomeRoditelj from "./views/HomeRoditelj";
 import HomeProfesor from "./views/HomeProfesor";
 import OdeljenjeUcenici from "./views/OdeljenjeUcenici";
 import OcenaUcenik from "./views/OcenaUcenik";
+import LoginAdmin from "./views/LoginAdmin";
+import HomeAdministrator from "./views/HomeAdministrator";
+import AdminPredmeti from "./views/AdminPredmeti";
+import AdminOdeljenja from "./views/AdminOdeljenja";
+import AdminProfesori from "./views/AdminProfesori";
+import AdminUcenici from "./views/AdminUcenici";
+import AdminPromenaOdeljenja from "./views/AdminPromenaOdeljenja";
+import AdminOcene from "./views/AdminOcene";
 
 const router=createBrowserRouter([
     {
@@ -43,6 +51,10 @@ const router=createBrowserRouter([
           {
             path:"/profesor-login",
             element:<LoginProfesor />
+          },
+          {
+            path:"/admin-login",
+            element:<LoginAdmin />
           }
 
         ],
@@ -68,6 +80,11 @@ const router=createBrowserRouter([
                 //profesor
                 path:'/home-profesor',
                 element:<HomeProfesor/>
+            },
+            {
+              //admin
+              path:'/home-admin',
+              element:<HomeAdministrator/>
             },
             {
                 //ucenik
@@ -99,6 +116,36 @@ const router=createBrowserRouter([
                 path:'/ocene-ucenika',
                 element: <OcenaUcenik/>
             },
+            {
+              //admin
+              path:'/admin-predmeti',
+                  element: <AdminPredmeti/>
+              },
+              {
+                //admin
+                path:'/admin-odeljenja',
+                element: <AdminOdeljenja/>
+              },
+              {
+                //admin
+                path:'/admin-profesori',
+                element: <AdminProfesori/>
+              },
+              {
+                //admin
+                path:'/admin-ucenici',
+                element: <AdminUcenici/>
+              },
+              {
+                //admin
+                path:'/admin-promena-odeljenja',
+                element: <AdminPromenaOdeljenja/>
+              },
+              {
+                //admin
+                path:'/admin-ocene',
+                element: <AdminOcene/>
+              },
         ],
     },
     {

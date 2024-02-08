@@ -69,25 +69,65 @@ class AuthController extends Controller
             //'redirect_url' => route('predmeti.ucenika', ['ucenikId' => $ucenik->id]),
         ]);
     }
-/*
+
     public function loginAdmin(Request $request) 
     {
-        if (!Auth::guard('admin')->attempt($request->only('username', 'password'))) {
+        if (!Auth::guard('administrator')->attempt($request->only('username', 'password'))) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
     
-        $admin = Auth::admin('admin')->user();
+        $admin = Auth::guard('administrator')->user();
     
         $token = $admin->createToken('auth_token')->plainTextToken;
     
         return response()->json([
-            'message' => 'Hi ' . $admin->ime . ', welcome to home',
+            'message' => 'Authorized',
+            'admin' => $admin,
             'access_token' => $token,
             'token_type' => 'Bearer',
         ]);
-    }
+    } 
 
-    public function registracijaAdmina(Request $request){
+    public function logoutAdmin()
+    {
+
+
+       // auth()->guard('ucenik')->logout();
+       $admin = auth()->user();
+       $admin->currentAccessToken()->delete();
+
+     //   return response()->json(['message' => 'Učenik uspešno odjavljen']);
+
+        return response()->json([
+            'message' => 'Admin uspešno odjavljen',
+            'redirect_url' => route('login'),
+        ]);
+
+    }
+  /*  {
+        $data = json_decode($request->getContent(), true);
+
+        $username = $data["username"];
+        $pass = $data["password"];
+
+        if(Auth::guard('administrator')->attempt(['username' => $username, 'password' => $pass])){
+            //$parent = Auth::guard('student')->user();
+        
+            $admin = Admin::where('username',$username)->firstOrFail();
+            $token = $admin->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+            'success' => 'Uspesno ste se ulogovali',
+            'data' => $admin,
+            'token' => $token,
+            ], 200);
+        }
+        //return redirect()->route('')->with('success', 'Uspesno ste se ulogovali');
+        return response()->json(['message' => 'Niste se uspešno ulogovali'],401);
+        //return redirect()->route('')->withErrors('success', 'Uspesno ste se ulogovali');
+    }*/
+
+  //  public function registracijaAdmina(Request $request){
 
     /*    $existingAdmin = Admin::where('email', $email)->first();
 

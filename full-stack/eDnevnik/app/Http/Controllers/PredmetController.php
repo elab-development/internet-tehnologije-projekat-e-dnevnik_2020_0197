@@ -57,8 +57,8 @@ class PredmetController extends Controller
     public function index()
     {
         //
-        $predmeti=Predmet::all();
-        return response()->json($predmeti);
+        $predmeti = Predmet::with('razredi')->get();
+        return PredmetResource::collection($predmeti);
     }
 
     /**

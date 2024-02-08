@@ -39,8 +39,8 @@ class OdeljenjeController extends Controller
     public function index()
     {
         //
-        $odeljenja=Odeljenje::all();
-        return response()->json($odeljenja);
+        $odeljenja = Odeljenje::withCount('ucenici')->get();
+        return OdeljenjeResource::collection($odeljenja);
     }
 
     /**

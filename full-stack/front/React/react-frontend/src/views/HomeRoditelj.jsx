@@ -62,10 +62,15 @@ function HomeRoditelj() {
 
   return (
     <div>
-     <h1 style={{ width: "100%", textAlign: "center", paddingTop: "10px", marginBottom: "20px", paddingBottom:"10px", backgroundColor: "rgba(0, 0, 0, 0.7)" , color:"white"}}>eRoditelj</h1>
-     <h1 style={{ width: "100%", textAlign: "center", marginBottom: "20px", paddingBottom:"10px"}} className='display-2'>{imeprezime}</h1>
-   
-     <div style={{ paddingTop:"60px"}}>
+       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+
+       <div className="container-fluid" style={{ fontSize:"30px",width: "100%", textAlign: "center", color:"white"}}>eRoditelj</div>
+
+       </nav>
+     
+     <h1 style={{ width: "100%", textAlign: "center", marginBottom: "20px", paddingBottom:"10px", background:"white", paddingTop:"10px"}} className='display-2'>{imeprezime}</h1>
+    
+     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems:"center", gap: '40px', marginTop:"70px", marginLeft:"19%", marginRight:"19%", marginBottom:"150px" }}>
      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center",  gap: '40px' }}>
       {deca?.map((dete) => (
         <DecaView dete={dete} key={dete.id} style={{ margin: "8px" }}/>
