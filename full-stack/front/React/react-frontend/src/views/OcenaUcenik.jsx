@@ -18,10 +18,59 @@ function OcenaUcenik() {
     const profesor = window.sessionStorage.getItem("profesor_id");
     const pid = parseInt(profesor, 10);
 
+    const predmet = window.sessionStorage.getItem("predmet_id");
+    const predmetId = parseInt(predmet, 10);
+
+    const razred = window.sessionStorage.getItem("odeljenje_razred");
+    const razredId = parseInt(razred, 10);
+
     const ime = window.sessionStorage.getItem("p_ucenik_ime");
     const prezime = window.sessionStorage.getItem("p_ucenik_prezime");
 
     const [ocene, setOcene] = useState([]);
+
+    const [novaOcena, setNovaOcena] = useState(
+      { 
+        vrednost: '', 
+        opis: '' ,
+        polugodiste: '1'
+      });
+
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNovaOcena({ ...novaOcena, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (!novaOcena.vrednost || !novaOcena.opis) {
+          alert('Molimo vas da unesete vrednost ocene i opis.');
+          return;
+      }
+      axios.post('http://127.0.0.1:8000/api/unosocene', {
+          ucenikId: uid,
+          predmetId: predmetId, 
+          razredId: 1, 
+          datum: new Date().toISOString().split('T')[0],
+          opis: novaOcena.opis,
+          polugodiste: novaOcena.polugodiste,
+          vrednost: novaOcena.vrednost,
+          profesorId: pid
+      }, {
+          headers: {
+              Authorization: "Bearer " + token,
+          }
+      })
+      .then((response) => {
+          console.log(response);
+          alert('Nova ocena uspešno unesena.');
+          setNovaOcena({ vrednost: '', opis: '', polugodiste: '1' }); // Resetujemo formu
+      })
+      .catch((error) => {
+          console.log(error);
+          alert('Došlo je do greške prilikom unosa nove ocene.');
+      });
+  };
 
     useEffect(() => {
         if (token && pid && uid) {
@@ -56,6 +105,8 @@ function OcenaUcenik() {
 
 
 
+
+
   return (
     <div>
       <NavBarProfesor />
@@ -63,17 +114,46 @@ function OcenaUcenik() {
             {ime} {prezime}
        </h2>
 
-       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: '15px', marginTop:"50px", marginBottom:"50px" }}>
-                {ocene.map((ocena) => (
-                    <OcenaPredmetView ocena={ocena} key={ocena.id} style={{ margin: "8px" }} />
-                ))}
-            </div>
+       <div style={{ display: "flex", justifyContent: "center" }}>
 
-       <div style={{ display:"flex", justifyContent:"center"}}>
-        <div className="card" style={{ width: 18 + "rem"}}>
-           <div className="card-header" style={{ color: 'navy', fontSize: '24px' }}>prosečna ocena: {prosecanProsek().toFixed(2)}</div>
+        <div style={{ width: "40%", display:"flex", justifyContent:"right", paddingRight:"100px"}}>
+        <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <label htmlFor="vrednost" className="form-label">Vrednost ocene:</label>
+                <input type="number" className="form-control" id="vrednost" name="vrednost" value={novaOcena.vrednost} onChange={handleInputChange} min="1" max="5" required />
+            </div>
+            <div className="mb-3">
+                <label htmlFor="opis" className="form-label">Opis ocene:</label>
+                <textarea className="form-control" id="opis" name="opis" value={novaOcena.opis} onChange={handleInputChange} required></textarea>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="polugodiste" className="form-label">Polugodište:</label>
+                <select className="form-select" id="polugodiste" name="polugodiste" value={novaOcena.polugodiste} onChange={handleInputChange}>
+                    <option value="1">Prvo polugodište</option>
+                    <option value="2">Drugo polugodište</option>
+                </select>
+            </div>
+            <div className='text-center' style={{ marginBottom: '20px'}}>
+                <button type="submit" className="btn btn-primary" style={{}}>Unesi novu ocenu</button>
+            </div>
+        </form>
+    </div>
+
+    <div style={{ width: "50%", marginLeft: "30px" }}>
+        <div style={{ display:'flex', flexWrap: "wrap", gap:"15px"}}>
+            {ocene.map((ocena) => (
+                <OcenaPredmetView ocena={ocena} key={ocena.id} style={{ margin: "8px" }} />
+            ))}
         </div>
-      </div>
+        
+           <div className="card" style={{ width: "18rem", marginTop: "20px" }}>
+            <div className="card-header" style={{ color: "navy", fontSize: "24px"}}>Prosečna ocena: {prosecanProsek().toFixed(2)}</div>
+           </div>
+       
+    </div>
+
+</div>
+
            
     </div>
   )

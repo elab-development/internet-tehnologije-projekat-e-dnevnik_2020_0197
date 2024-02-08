@@ -9,7 +9,7 @@
     <title>Ocene</title>
 </head>
 <body>
-    <h1>Ocene deteta</h1>
+    <h1>Ocene ucenika</h1>
 
     <table border="1">
         <thead>

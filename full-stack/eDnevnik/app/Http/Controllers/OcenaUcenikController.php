@@ -15,9 +15,9 @@ use App\Models\Profesor;
 class OcenaUcenikController extends Controller
 {
 
-    public function oceneNaPredmetu($ucenikId, $predmetId) {
+    public function oceneNaPredmetu($predmetId, $ucenikId) {
         
-        $ocene = Ocena::with('profesor')->where('ucenikId', $ucenikId)->where('predmetId', $predmetId)->get();
+        $ocene = Ocena::where('ucenikId', $ucenikId)->where('predmetId', $predmetId)->get();
 
         return $ocene->isEmpty()
         ? response()->json(['error' => 'Ocene nisu pronadjene'], 404)

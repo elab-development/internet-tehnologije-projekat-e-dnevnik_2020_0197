@@ -43,7 +43,7 @@ function PredmetiUcenik() {
 const handleExportToPdf = () => {
   if (id) {
     axios
-      .get('http://127.0.0.1:8000/api/eksport-ocena/'+id, { // Koristi samo id ucenika
+      .get('http://127.0.0.1:8000/api/eksport-ocena/'+id, { 
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -91,21 +91,23 @@ const handleExportToPdf = () => {
     <div>
       <NavBar/>
       <h1 style={{ width: "100%", textAlign: "center", paddingTop: "10px", marginBottom: "20px", paddingBottom:"10px", backgroundColor: "white" }}>Predmeti u tekućoj školskoj godini</h1>
+     
+      <div style={{display: "flex", justifyContent:"center", paddingTop:"5px", paddingBottom:"20px"}}>
+      <button
+        type="button"
+        className="btnEksportujOcene"
+        data-mdb-ripple-init
+        onClick={handleExportToPdf}>
+        Preuzmi ocene</button>
+        </div>
+
       <div className="list-group" style={{width:"400px",  margin: "0 auto" }}>
       {predmeti?.map((predmet) => (
         
         <PredmetiUcenikView predmet={predmet} key={predmet.id} style={{ margin: "8px",  display: "flex", justifyContent:"center" }}/>
       ))}
        </div>
-       <div className="eksportOcenaKlasa" style={{display: "flex", justifyContent:"center", paddingTop:"30px"}}>
 
-       <button
-        type="button"
-        className="btnEksportujOcene"
-        data-mdb-ripple-init
-        onClick={handleExportToPdf}>
-        Eksportuj u pdf</button>
-       </div>
     </div>
   )
 }

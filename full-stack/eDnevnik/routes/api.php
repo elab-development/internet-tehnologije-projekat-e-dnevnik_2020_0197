@@ -46,21 +46,18 @@ Route::post('/login-roditelj', [AuthController::class, 'loginRoditelj']);
 Route::get('/predmeti', [PredmetController::class, 'index']);
 
 Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function ()
-//Route::middleware(['auth:sanctum','ucenik'])->group(function () 
 {
     // Sve rute koje će koristiti ucenik ili roditelj
     //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
     
-
     //ucenik, roditelj
     Route::get('/profesori-odeljenja/{odeljenjeId}/predmet/{predmetId}', [ProfesorController::class, 'profesorZaPredmetIOdeljenje']);
     //ovo je ruta gde ucenik bira da mu se prikaze ime i prezime profesora koji mu drzi neki konkretan predmet
     //u predavacu nam se cuvaju svi profesori koji predaju nekom odeljenju
     //a u uceniku imamo spoljni kljuc ka odeljenju, tj. kom odeljenju pripada ucenik
 
-    //ucenik,roditelj
+    //ucenik,roditelj OVA NAM IPAK NE TREBA JA MISLIM
     Route::get('/profesori-odeljenja/{odeljenjeId}', [ProfesorController::class, 'profesoriZaOdeljenje']);
-
 
     //rod, ucenik
     Route::get('/predmeti-ucenika/{ucenikId}', [PredmetController::class, 'predmetiZaUcenika'])->name('predmeti.ucenika');
@@ -74,6 +71,7 @@ Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function ()
     //ucenik i roditelj kada izaberu predmet mogu da vide sve ocene iz tog predmeta
     Route::get('ocene-iz-predmeta/{predmetId}/{ucenikId}', [OcenaUcenikController::class, 'oceneNaPredmetu']);
     
+    Route::get('/eksport-ocena/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
 
 });
 
@@ -81,37 +79,10 @@ Route::middleware(['auth:sanctum','ucenik_or_roditelj'])->group(function ()
 Route::middleware(['auth:sanctum','roditelj'])->group(function () 
 {
 
-    Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');;
-    
-   // Route::get('/eksport-ocena/{roditeljId}/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
-   Route::get('/eksport-ocena/{ucenikId}', [EksportOcenaController::class, 'EksportOcena']);
+    Route::get('/deca-roditelja/{roditeljId}', [UcenikController::class, 'uceniciZaRoditelja'])->name('ucenici.roditelja');
 
     Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
-/*
-OVO JE ONO STO NAM JE PRAVILO PROBLEM:
-  // Sve rute koje će koristiti ucenik ili roditelj
-    //Route::get('/dashboard', 'UcenikController@dashboard')->name('ucenik_or_roditelj.dashboard');
-    
 
-    //ucenik, roditelj
-    Route::get('/profesori-odeljenja/{odeljenjeId}/predmet/{predmetId}', [ProfesorController::class, 'profesorZaPredmetIOdeljenje']);
-    //ovo je ruta gde ucenik bira da mu se prikaze ime i prezime profesora koji mu drzi neki konkretan predmet
-    //u predavacu nam se cuvaju svi profesori koji predaju nekom odeljenju
-    //a u uceniku imamo spoljni kljuc ka odeljenju, tj. kom odeljenju pripada ucenik
-
-    //ucenik,roditelj
-    Route::get('/profesori-odeljenja/{odeljenjeId}', [ProfesorController::class, 'profesoriZaOdeljenje']);
-
-
-    //rod, ucenik
-    Route::get('/predmeti-ucenika/{ucenikId}', [PredmetController::class, 'predmetiZaUcenika'])->name('predmeti.ucenika');
-
-    //ucenik i roditelj kada izaberu predmet mogu da vide sve ocene iz tog predmeta
-    Route::get('ocene-iz-predmeta/{predmetId}/{ucenikId}', [OcenaUcenikController::class, 'oceneNaPredmetu']);
-
-    //LOGOUT RODITELJA FALI!!!!! RUTA SAMO..
-    Route::post('/logout-roditelj', [AuthController::class, 'logoutRoditelj']);
-*/
 });
 
 Route::middleware(['auth:sanctum','ucenik'])->group(function () 
@@ -124,7 +95,6 @@ Route::middleware(['auth:sanctum','ucenik'])->group(function ()
 Route::middleware(['auth:sanctum','profesor'])->group(function () 
 {
     //profesoru se prikazuju samo ona odeljenja kojima predaje
-    //profesor
     Route::get('/odeljenja-profesora/{profesorId}', [OdeljenjeController::class, 'odeljenjaZaProfesora'])->name('odeljenja.profesora');;
 
     //profesor moze da vidi ucenike u okviru odeljenja kojima je predavac
@@ -135,6 +105,7 @@ Route::middleware(['auth:sanctum','profesor'])->group(function ()
 
     //profesor moze uceniku da unese novu ocenu
     Route::post('/unosocene', [OcenaUnosController::class, 'store']);
+    
     Route::post('/logout-profesor', [AuthController::class, 'logoutProfesor']);
 
 });
