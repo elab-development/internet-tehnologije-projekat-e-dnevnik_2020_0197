@@ -12,55 +12,82 @@ function OcenaAll() {
 
   const [ocene, setOcene] = useState([]);
   const [selectedOcena, setSelectedOcena] = useState(null);
+  const [ocenaCounts, setOcenaCounts] = useState([0, 0, 0, 0, 0]);
 
   const handleNavigateToHome = () => {
     navigate("/home-ucenik"); 
   };
 
+  useEffect(() => {
+    if (!token || !ucenik) return;
 
-/*  let config = {
-    method: "get",
-    url: 'http://127.0.0.1:8000/api/sve-ocene-ucenika/'+id,
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  };
+    let config = {
+      method: "get",
+      url: `http://127.0.0.1:8000/api/sve-ocene-ucenika/${id}`,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
 
-  axios
-    .request(config)
-    .then((response) => {
-    console.log(response);
-    setOcene(response.data.ocene);
-    })
-    .catch((error) => {
-      console.log(error);
-    }); */
-
-    useEffect(() => {
-      if (!token || !ucenik) return;
-  
-      let config = {
-        method: "get",
-        url: `http://127.0.0.1:8000/api/sve-ocene-ucenika/${id}`,
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      };
-  
-      axios
-        .request(config)
-        .then((response) => {
-          console.log(response);
-          setOcene(response.data.ocene);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, [token, ucenik, id]);
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(response);
+        setOcene(response.data.ocene);
+        countOcene(response.data.ocene);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [token, ucenik, id]);
 
   const handleOcenaChange = (e) => {
     setSelectedOcena(e.target.value === 'null' ? null : parseInt(e.target.value));
   };
+
+  const countOcene = (ocene) => {
+    const counts = [0, 0, 0, 0, 0];
+    ocene.forEach((ocena) => {
+      counts[ocena.ocena - 1]++;
+    });
+    setOcenaCounts(counts);
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line
+    google.charts.load('current', { packages: ['corechart'] });
+    // eslint-disable-next-line
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // eslint-disable-next-line
+      const data = google.visualization.arrayToDataTable([
+        ['Ocena', 'Broj'],
+        ['Odličan (5)', ocenaCounts[4]],
+        ['Vrlo dobar (4)', ocenaCounts[3]],
+        ['Dobar (3)', ocenaCounts[2]],
+        ['Dovoljan (2)', ocenaCounts[1]],
+        ['Nedovoljan (1)', ocenaCounts[0]],
+      ]);
+
+      const options = {
+        title: 'Statistika ocena',
+        legend: { position: 'none' },
+        chartArea: { width: '50%' },
+        hAxis: {
+          title: 'Broj ocena',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Ocena',
+        },
+      };
+
+      // eslint-disable-next-line
+      const chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  }, [ocenaCounts]);
 
   if (token === null || ucenik == null) {
     return (
@@ -90,10 +117,8 @@ function OcenaAll() {
   return (
     <div>
       <NavBar />
-   
 
       <div style={{ marginBottom: '20px', marginTop: '20px', marginLeft:'8px', marginRight:'8px' }}>
-        
         <select
           value={selectedOcena}
           onChange={handleOcenaChange}
@@ -115,6 +140,8 @@ function OcenaAll() {
             <OcenaView ocena={ocena} key={ocena.id} style={{ margin: "8px" }} />
           ))}
       </div>
+
+      
       <button
         type="button"
         className="btn btn-primary"
@@ -123,6 +150,10 @@ function OcenaAll() {
       >
         Prethodna
       </button>
+
+      <div id="chart_div" style={{ width: '100%', height: '400px', margin: '20px auto' }}></div>
+
+
     </div>
   );
 }

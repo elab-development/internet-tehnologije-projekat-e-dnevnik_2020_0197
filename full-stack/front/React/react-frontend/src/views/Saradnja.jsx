@@ -19,7 +19,7 @@ function Saradnja() {
           Budite slobodni da ih kontaktirate u terminu konsultacija ukoliko imate bilo kakva pitanja. Naši učenici već godinama nakon završetka srednjoškolskog obrazovanja
           u velikom broju odlaze na studije u inostranstvo upravo kod naših saradnika.
         </p>
-        <img src="https://img.freepik.com/free-vector/successful-partnership-negotiation-partners-handshaking_335657-2453.jpg" alt="partnership" style={{ width: "100%", marginTop: "20px" }} />
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.2932111345626!2d20.42571556117308!3d44.81559092636101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a655de1b688c1%3A0x8c74c5663986b082!2zRGVzZXRhIGdpbW5hemlqYSDigJ5NaWhhamxvIFB1cGlu4oCcLCBBbnRpZmHFoWlzdGnEjWtlIGJvcmJlIDHQsCwgQmVvZ3JhZCAxOTA2MjU!5e0!3m2!1sen!2srs!4v1707445716312!5m2!1sen!2srs" style={{width:"100%", height:"400px", style:"border:0;", allowfullscreen:"", loading:"lazy", referrerpolicy:"no-referrer-when-downgrade"}}></iframe>
       </div>
       <div className="list-group" style={{ width: "400px" }}>
         <SaradnjaService />
@@ -29,4 +29,5 @@ function Saradnja() {
   )
 }
 
-export default Saradnja
+export default Saradnja 
+
