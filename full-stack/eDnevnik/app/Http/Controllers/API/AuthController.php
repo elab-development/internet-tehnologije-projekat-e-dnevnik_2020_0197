@@ -233,7 +233,7 @@ class AuthController extends Controller
             'odeljenjeId' => 'exists:odeljenjes,id',
         ]);
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return response()->json(['message' => 'notsuccess', 'errors' => $validator->errors()], 422);
         }
 
         $ucenik=Ucenik::create([
@@ -248,9 +248,8 @@ class AuthController extends Controller
 
         $token=$ucenik->createToken('auth_token')->plainTextToken;
         return response()->json([
-            'data'=>$ucenik,
-            'access_token'=>$token,
-            'token_type'=>'Bearer'
+            'message'=>'success',
+            'data'=>$ucenik
         ]);
     }
 

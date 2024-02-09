@@ -89,6 +89,20 @@ function HomeAdministrator() {
         </div>
       </div>
 
+      <div className="card" style={{ width: 18 + "rem" }}>
+        <Link className="nav-link card-header" to="/admin-ocene" style={{ color: 'navy', fontSize: '24px' }}>Ocene</Link>
+        <div className="card-body">
+          <p className="card-text">pregled i manipulacija nad ocenama u bazi</p>
+        </div>
+      </div>
+
+      <div className="card" style={{ width: 18 + "rem" }}>
+        <Link className="nav-link card-header" to="/admin-registracija-ucenika" style={{ color: 'navy', fontSize: '24px' }}>Registracija</Link>
+        <div className="card-body">
+          <p className="card-text">registracija i dodavanje novoupisanog učenika u bazu</p>
+        </div>
+      </div>
+
         </div>
 
 

@@ -25,6 +25,8 @@ import AdminProfesori from "./views/AdminProfesori";
 import AdminUcenici from "./views/AdminUcenici";
 import AdminPromenaOdeljenja from "./views/AdminPromenaOdeljenja";
 import AdminOcene from "./views/AdminOcene";
+import AdminRegistracija from "./views/AdminRegistracija";
+import AdminRegistracijaUcenik from "./views/AdminRegistracijaUcenik";
 
 const router=createBrowserRouter([
     {
@@ -145,6 +147,16 @@ const router=createBrowserRouter([
                 //admin
                 path:'/admin-ocene',
                 element: <AdminOcene/>
+              },
+              {
+                //admin
+                path:'/admin-registracija',
+                element: <AdminRegistracija/>
+              },
+              {
+                //admin
+                path:'/admin-registracija-ucenika',
+                element: <AdminRegistracijaUcenik/>
               },
         ],
     },
