@@ -36,25 +36,11 @@ class Ocena extends Model
     {
         return $this->belongsTo(Ucenik::class, 'ucenikId');
     }
-
-    //OVA DVA PROVERITI
-   /* public function predmet()
-    {
-        return $this->belongsTo(PredmetRazred::class, 'predmetId');
-    }
-    
-    public function razred() 
-    {
-        return $this->belongsTo(PredmetRazred::class,'razredId');
-    }*/
   
     public function predmetRazred() 
     {
         return $this->belongsTo(PredmetRazred::class, ['predmetId', 'razredId']);
     }
-
-    
-    //I U ZAKLJUCNA OCENA ISTO
 
     public function profesor()
     {

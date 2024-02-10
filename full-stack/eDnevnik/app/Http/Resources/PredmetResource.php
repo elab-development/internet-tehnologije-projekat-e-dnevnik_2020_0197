@@ -18,7 +18,7 @@ class PredmetResource extends JsonResource
     {
         $razredi = PredmetRazred::join('razreds', 'predmet_razreds.razredId', '=', 'razreds.id')
         ->where('predmet_razreds.predmetId', $this->id)
-        ->pluck('razreds.id')
+        ->pluck('razreds.godinaRazreda')
         ->toArray();
 
         return [

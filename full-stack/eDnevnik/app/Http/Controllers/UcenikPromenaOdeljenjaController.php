@@ -15,12 +15,7 @@ class UcenikPromenaOdeljenjaController extends Controller
         $validatedData = $request->validate([
             
             'odeljenjeId' => 'required|exists:odeljenjes,id',
-           
-            //'email' => 'required|email|unique:uceniks,email', 
-           // 'password' => 'required|string',   //DODATI ZA PASSWORD DA BUDE SAKRIVEN!
-           
-           //za email i password napraviti odvojeno azuriranje, takodje staviti try catch za email jer ako se stavi
-           //mejl nece raditi zbog unique ogranicenja
+  
         ]);
 
         $ucenik->update($validatedData);

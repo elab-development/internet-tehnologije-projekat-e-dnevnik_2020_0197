@@ -39,7 +39,7 @@ function AdminPredmeti() {
                         <tr>
                             <th>ID</th>
                             <th>Naziv predmeta</th>
-                            <th>Razredi</th>
+                            <th>Godine u kojima se sluša predmet</th>
                         </tr>
                     </thead>
                     <tbody>
