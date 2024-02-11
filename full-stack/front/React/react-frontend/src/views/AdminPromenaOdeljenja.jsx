@@ -11,9 +11,9 @@ function AdminPromenaOdeljenja() {
   const ucenikId = window.sessionStorage.getItem("a_ucenik_id");
   const token = window.sessionStorage.getItem("auth_token");
 
-  const updateUcenikData = async () => {
+  function updateUcenikData() {
     try {
-      const response = await axios.put(
+      axios.put(
         `http://127.0.0.1:8000/api/izmenaucenika/${ucenikId}`,
         { odeljenjeId: selectedOdeljenje }, 
         {
@@ -25,7 +25,7 @@ function AdminPromenaOdeljenja() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
   
   useEffect(() => {
 
