@@ -20,7 +20,7 @@ function Saradnja() {
       const response = await fetch('http://worldtimeapi.org/api/timezone/Europe/Belgrade');
       const data = await response.json();
       const dateTime = new Date(data.datetime);
-      const formattedDateTime = `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
+      const formattedDateTime = `${dateTime.toLocaleDateString()}`;
       setCurrentTime(formattedDateTime);
     } catch (error) {
       console.error('Greška pri dohvatanju vremena:', error);
