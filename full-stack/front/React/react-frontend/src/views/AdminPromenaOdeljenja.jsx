@@ -29,14 +29,9 @@ function AdminPromenaOdeljenja() {
 
 
 
-  async function updateUcenikData() {
+  async function updateUcenikData(e) {
+    e.preventDefault();
     try {
-      console.log("pocela azuriranje odeljenje!!!!!!");
-      console.log("pocela azuriranje odeljenje!!!!!!");
-      console.log("pocela azuriranje odeljenje!!!!!!");
-      console.log("pocela azuriranje odeljenje!!!!!!");
-      console.log("pocela azuriranje odeljenje!!!!!!");
-      console.log("pocela azuriranje odeljenje!!!!!!");
       console.log("pocela azuriranje odeljenje!!!!!!");
       await axios.put(
         `http://127.0.0.1:8000/api/izmenaucenika/${ucenikId}`,
