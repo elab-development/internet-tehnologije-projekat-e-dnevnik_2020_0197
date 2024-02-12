@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import axios from 'axios';
 import NavBarAdmin from './NavBarAdmin';
 
@@ -11,9 +11,34 @@ function AdminPromenaOdeljenja() {
   const ucenikId = window.sessionStorage.getItem("a_ucenik_id");
   const token = window.sessionStorage.getItem("auth_token");
 
-  function updateUcenikData() {
+  const fetchUcenikData = useCallback(async () => {
+    console.log("pocela fetch ucenik data")
     try {
-      axios.put(
+      const response = await axios.get(`http://127.0.0.1:8000/api/ucenici/${ucenikId}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setUcenikData(response.data.data);
+      console.log("dobijen odgovor od fetch");
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [ucenikId, token]);
+
+
+
+  async function updateUcenikData() {
+    try {
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      console.log("pocela azuriranje odeljenje!!!!!!");
+      await axios.put(
         `http://127.0.0.1:8000/api/izmenaucenika/${ucenikId}`,
         { odeljenjeId: selectedOdeljenje }, 
         {
@@ -22,11 +47,14 @@ function AdminPromenaOdeljenja() {
           },
         }
       );
+      console.log("selektovano odeljenje!!!!!!");
+      await fetchUcenikData(); 
     } catch (error) {
       console.log(error);
     }
   }
-  
+
+
   useEffect(() => {
 
     const fetchOdeljenja = async () => {
@@ -42,26 +70,15 @@ function AdminPromenaOdeljenja() {
       }
     };
 
-    const fetchUcenikData = async () => {
-        try {
-          const response = await axios.get(`http://127.0.0.1:8000/api/ucenici/${ucenikId}`, {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          });
-          setUcenikData(response.data.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
       fetchOdeljenja();
       fetchUcenikData();
-    
-  }, [token, ucenikId]);
+
+  }, [token, ucenikId,selectedOdeljenje,fetchUcenikData]);
 
   const handleOdeljenjeChange = (e) => {
     setSelectedOdeljenje(e.target.value);
+    console.log("promenjenno")
+    console.log(e.target.value);
   };
 
   const filteredOdeljenja = odeljenja.filter((odeljenje) => odeljenje.razred === ucenikData.razred);
@@ -107,4 +124,3 @@ function AdminPromenaOdeljenja() {
 }
 
 export default AdminPromenaOdeljenja;
-
